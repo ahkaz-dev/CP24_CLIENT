@@ -5,32 +5,74 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import ru.harmony.cp24_client.Entity.User;
+import ru.harmony.cp24_client.service.entity.UserService;
 
 import javax.swing.*;
 import java.io.IOException;
 
 public class HelloController {
+    private final UserService service = new UserService();
+    public TextField usPassText;
+    public TextField usLoginText;
+    public Button exitButton;
+    public ImageView loginByGoogleButton;
+    public Label loginErrorLabel;
+    String login, password;
+
+    Alert a = new Alert(Alert.AlertType.NONE);
     @FXML
     private Button loginButton;
 
-    private Stage primaryStage; // Сохраняем ссылку на первичное окно
+    private Stage primaryStage;
 
     public void setPrimaryStage(Stage primaryStage) { // Метод для установки первичного окна
         this.primaryStage = primaryStage;
+        loginErrorLabel.setVisible(false);
     }
 
     @FXML
     private void handleLoginButton() throws IOException {
-        FXMLLoader loader = new FXMLLoader(HelloController.class.getResource("main-view.fxml"));
-        Parent root = loader.load();
+        if (dataValidation()) {
+            try {
+                service.findByData(login, password);
+                FXMLLoader loader = new FXMLLoader(HelloController.class.getResource("main-view.fxml"));
+                Parent root = loader.load();
 
-        Scene scene = new Scene(root);
-        primaryStage.setScene(scene); // Устанавливаем новую сцену для первичного окна
-        primaryStage.show(); // Отображаем новое окно
+                Scene scene = new Scene(root);
+                primaryStage.setScene(scene);
+                primaryStage.show();
+            } catch (Exception e){
+                loginErrorLabel.setVisible(true);
+            }
+        } else {
+            a.setAlertType(Alert.AlertType.ERROR);
+            a.setHeaderText("Ошибка ввода");
+            a.setContentText("Данные входа отсутствуют");
+            a.show();
+        }
+    }
 
-        // primaryStage.close(); // Альтернативно, вы можете закрыть первичное окно, но в этом случае вам нужно будет создать новое окно, а не переиспользовать первичное
+    public boolean dataValidation() {
+        if (!usLoginText.getText().isEmpty() & !usPassText.getText().isEmpty()) {
+            login = usLoginText.getText();
+            password = usPassText.getText();
+            return true;
+        }
+        return false;
+    }
+
+    public void handleGoogleLoginButton(MouseEvent mouseEvent) {
+        a.setAlertType(Alert.AlertType.INFORMATION);
+        a.setHeaderText("Хедер");
+        a.setContentText("Текст");
+        a.show();
     }
 }

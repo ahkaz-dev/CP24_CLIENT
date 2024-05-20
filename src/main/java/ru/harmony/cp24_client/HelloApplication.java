@@ -16,8 +16,8 @@ public class HelloApplication extends Application {
         FXMLLoader loader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
         Parent root = loader.load();
 
-        HelloController helloController = loader.getController(); // Получаем ссылку на контроллер
-        helloController.setPrimaryStage(primaryStage); // Передаем ссылку на первичное окно в контроллер
+        HelloController helloController = loader.getController();
+        helloController.setPrimaryStage(primaryStage);
 
         Scene scene = new Scene(root);
         primaryStage.setScene(scene);
