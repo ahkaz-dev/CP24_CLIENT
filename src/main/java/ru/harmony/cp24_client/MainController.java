@@ -7,20 +7,24 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
-import ru.harmony.cp24_client.controller.Category_ITController;
+import ru.harmony.cp24_client.controller.VacancyController;
 
 import java.io.IOException;
 
 public class MainController {
     @FXML
     public Label userLoginLabel;
+    public Pane catalogMainPane;
+    @FXML
+    private AnchorPane anchorPaneMain;
     @FXML
     private BorderPane mainBorderPane;
 
-    private MenuController menuController;
-    private Category_ITController categoryItController;
+    private VacancyController categoryItController;
 
     private Stage primaryStage;
     private HelloController controller;
@@ -55,16 +59,17 @@ public class MainController {
         //primaryStage.close();
     }
 
+    @FXML
     public void handeITcontinueButton(ActionEvent actionEvent) throws IOException {
-        FXMLLoader loader = new FXMLLoader(MainController.class.getResource("category-it.fxml"));
-        Parent root = loader.load();
+/*        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("category-it.fxml"));
+        AnchorPane vista2 = (AnchorPane) fxmlLoader.load();
+        anchorPaneMain.getChildren().setAll(vista2);*/
+    }
 
-        Category_ITController categoryItController = loader.getController();
-        categoryItController.setPrimaryStage(primaryStage);
-        categoryItController.setHelloApplication(this.helloApplication);
-
-        Scene scene = new Scene(root);
-        primaryStage.setScene(scene);
-        primaryStage.show();
+    @FXML
+    public void handeIVacancyButton(MouseEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("vacancy-view.fxml"));
+        AnchorPane vista2 = (AnchorPane) fxmlLoader.load();
+        anchorPaneMain.getChildren().setAll(vista2);
     }
 }

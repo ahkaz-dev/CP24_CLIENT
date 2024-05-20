@@ -11,6 +11,8 @@ import java.util.Properties;
 public class ClientProperties {
     private final Properties properties = new Properties();
 
+    private String allVacancy;
+
     private String allUser;
     private String deleteUser;
     private String saveUser;
@@ -21,6 +23,8 @@ public class ClientProperties {
         try (InputStream inputStream = HelloApplication.class.getClassLoader().getResourceAsStream("config.properties")) {
             System.out.println(inputStream);
             properties.load(inputStream);
+
+            allVacancy = properties.getProperty("vacancy.getAll");
 
             allUser = properties.getProperty("user.getAll");
             deleteUser = properties.getProperty("user.delete");
