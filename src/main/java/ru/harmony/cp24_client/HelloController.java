@@ -1,5 +1,6 @@
 package ru.harmony.cp24_client;
 
+import com.sun.tools.javac.Main;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -50,11 +51,17 @@ public class HelloController {
 
     @FXML
     private void handleLoginButton() throws IOException {
-/*        if (dataValidation()) {
+        if (dataValidation()) {
             try {
+                 primaryStage.close();
                 service.findByData(login, password);
-                FXMLLoader loader = new FXMLLoader(HelloController.class.getResource("main-view.fxml"));
+                FXMLLoader loader = new FXMLLoader(MainController.class.getResource("main-view.fxml"));
                 Parent root = loader.load();
+
+                MainController mainController = loader.getController();
+                mainController.setPrimaryStage(primaryStage);
+                mainController.setHelloApplication(this.helloApplication);
+                mainController.setUserLoginLabel(new Label(login));
 
                 Scene scene = new Scene(root);
                 primaryStage.setScene(scene);
@@ -70,8 +77,9 @@ public class HelloController {
             a.setHeaderText("Ошибка ввода");
             a.setContentText("Данные входа отсутствуют");
             a.show();
-        }*/
-        primaryStage.close();
+        }
+
+/*        primaryStage.close();
 
         FXMLLoader loader = new FXMLLoader(HelloController.class.getResource("main-view.fxml"));
         Parent root = loader.load();
@@ -82,7 +90,7 @@ public class HelloController {
 
         Scene scene = new Scene(root);
         primaryStage.setScene(scene);
-        primaryStage.show();
+        primaryStage.show();*/
     }
 
     public boolean dataValidation() {
@@ -103,12 +111,16 @@ public class HelloController {
     }
 
     public void handleExitButton(ActionEvent event) {
-        if (helloApplication.isLoginWindowOpen()) { // If login window is open, just close it
+/*        if (helloApplication.isLoginWindowOpen()) { // If login window is open, just close it
             primaryStage.close();
         } else { // If login window is not open, close all windows and exit the application
             primaryStage.close();
             Platform.exit();
-            System.exit(0);
+            System.exit(0);*/
+        Stage loginStage = (Stage) exitButton.getScene().getWindow();
+        loginStage.close();
+
+        // Exit application
+        System.exit(0);
         }
     }
-}

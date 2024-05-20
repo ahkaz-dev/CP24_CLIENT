@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -12,9 +13,12 @@ import java.util.Objects;
 
 public class HelloApplication extends Application {
     private boolean isLoginWindowOpen = true;
+    private static Stage loginStage;
+
 
     @Override
     public void start(Stage primaryStage) throws Exception {
+
         FXMLLoader loader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
         Parent root = loader.load();
         primaryStage.setTitle("Harmony");
@@ -29,6 +33,22 @@ public class HelloApplication extends Application {
         primaryStage.setScene(scene);
         primaryStage.show();
     }
+
+/*    public static void showLoginWindow() {
+        try {
+            FXMLLoader fxmlLoader = new FXMLLoader(HelloApplication.class.getResource("hello-view.fxml"));
+            Parent root = fxmlLoader.load();
+            Stage loginStage = new Stage();
+            loginStage.initModality(Modality.APPLICATION_MODAL);
+            loginStage.setTitle("Login");
+            loginStage.setScene(new Scene(root, 1069, 653));
+            loginStage.setResizable(false);
+            loginStage.show();
+            HelloApplication.loginStage = loginStage;
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }*/
 
     public void setLoginWindowOpen(boolean isLoginWindowOpen) {
         this.isLoginWindowOpen = isLoginWindowOpen;

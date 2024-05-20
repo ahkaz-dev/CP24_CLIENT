@@ -101,3 +101,41 @@ CATEGORY WINDOW STYLE
     -fx-font-family: "Inter SemiBold";
     -fx-text-fill: white;
 }
+#handleLogoutButton {
+    -fx-cursor: hand;
+}
+.category-it-div {
+    -fx-background-image: url("../image/backgrounds/category-it-card.png");
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.4), 10, 0, 0, 0);
+}
+.category-digMarketing-div {
+    -fx-background-image: url("../image/backgrounds/category-digMarketing-card.png");
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.4), 10, 0, 0, 0);
+}
+.category-health-div {
+    -fx-background-image: url("../image/backgrounds/category-health-card.png");
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.4), 10, 0, 0, 0);
+}
+.category-security-div {
+    -fx-background-image: url("../image/backgrounds/category-security-card.png");
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.4), 10, 0, 0, 0);
+}
+.category-science-div {
+    -fx-background-image: url("../image/backgrounds/category-science-card.png");
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.4), 10, 0, 0, 0);
+}
+.category-none-div {
+/*    -fx-background-image: url("../image/backgrounds/category-unknown-card.png");*/
+/*    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.4), 10, 0, 0, 0);*/
+    -fx-effect: innershadow( gaussian, rgba(0, 0, 0, 0.4), 10, 0, 0,0 );
+    -fx-background-color: white;
+    -fx-background-radius: 10 10 10 10;
+}
+.category-ok-button {
+    -fx-background-color: #D3C1A3;
+    -fx-background-radius: 10 10 10 10;
+
+    -fx-font-size: 12px;
+    -fx-font-family: "Inter Medium";
+    -fx-text-fill: white;
+}
