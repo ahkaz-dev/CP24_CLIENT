@@ -11,6 +11,7 @@ import java.io.IOException;
 import java.util.Objects;
 
 public class HelloApplication extends Application {
+    private boolean isLoginWindowOpen = true;
 
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -22,10 +23,19 @@ public class HelloApplication extends Application {
 
         HelloController helloController = loader.getController();
         helloController.setPrimaryStage(primaryStage);
+        helloController.setHelloApplication(this);
 
         Scene scene = new Scene(root);
         primaryStage.setScene(scene);
         primaryStage.show();
+    }
+
+    public void setLoginWindowOpen(boolean isLoginWindowOpen) {
+        this.isLoginWindowOpen = isLoginWindowOpen;
+    }
+
+    public boolean isLoginWindowOpen() {
+        return isLoginWindowOpen;
     }
 
     public static void main(String[] args) {

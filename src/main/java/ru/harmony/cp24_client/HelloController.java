@@ -1,5 +1,6 @@
 package ru.harmony.cp24_client;
 
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -34,6 +35,7 @@ public class HelloController {
     private Button loginButton;
 
     private Stage primaryStage;
+    private HelloApplication helloApplication;
 
     public void setPrimaryStage(Stage primaryStage) { // Метод для установки первичного окна
         this.primaryStage = primaryStage;
@@ -42,9 +44,13 @@ public class HelloController {
         loginErrorConectionLabel.setVisible(!service.checkServerConnect());
     }
 
+    public void setHelloApplication(HelloApplication helloApplication) { // Метод для установки главного класса приложения
+        this.helloApplication = helloApplication;
+    }
+
     @FXML
     private void handleLoginButton() throws IOException {
-        if (dataValidation()) {
+/*        if (dataValidation()) {
             try {
                 service.findByData(login, password);
                 FXMLLoader loader = new FXMLLoader(HelloController.class.getResource("main-view.fxml"));
@@ -64,7 +70,19 @@ public class HelloController {
             a.setHeaderText("Ошибка ввода");
             a.setContentText("Данные входа отсутствуют");
             a.show();
-        }
+        }*/
+        primaryStage.close();
+
+        FXMLLoader loader = new FXMLLoader(HelloController.class.getResource("main-view.fxml"));
+        Parent root = loader.load();
+
+        MainController mainController = loader.getController();
+        mainController.setPrimaryStage(primaryStage);
+        mainController.setHelloApplication(this.helloApplication);
+
+        Scene scene = new Scene(root);
+        primaryStage.setScene(scene);
+        primaryStage.show();
     }
 
     public boolean dataValidation() {
@@ -85,6 +103,12 @@ public class HelloController {
     }
 
     public void handleExitButton(ActionEvent event) {
-        primaryStage.close();
+        if (helloApplication.isLoginWindowOpen()) { // If login window is open, just close it
+            primaryStage.close();
+        } else { // If login window is not open, close all windows and exit the application
+            primaryStage.close();
+            Platform.exit();
+            System.exit(0);
+        }
     }
 }

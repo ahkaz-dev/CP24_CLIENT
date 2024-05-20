@@ -96,3 +96,8 @@ CATEGORY WINDOW STYLE
 .category-pane-div {
     -fx-background-color: grey;
 }
+#userLoginLabel {
+    -fx-font-size: 12px;
+    -fx-font-family: "Inter SemiBold";
+    -fx-text-fill: white;
+}
