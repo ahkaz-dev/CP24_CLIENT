@@ -40,7 +40,7 @@ public class HelloController {
 
     @FXML
     private void handleLoginButton() throws IOException {
-        if (dataValidation()) {
+/*        if (dataValidation()) {
             try {
                 service.findByData(login, password);
                 FXMLLoader loader = new FXMLLoader(HelloController.class.getResource("main-view.fxml"));
@@ -48,6 +48,7 @@ public class HelloController {
 
                 Scene scene = new Scene(root);
                 primaryStage.setScene(scene);
+                primaryStage.setResizable(false);
                 primaryStage.show();
             } catch (Exception e){
                 loginErrorLabel.setVisible(true);
@@ -57,7 +58,14 @@ public class HelloController {
             a.setHeaderText("Ошибка ввода");
             a.setContentText("Данные входа отсутствуют");
             a.show();
-        }
+        }*/
+        FXMLLoader loader = new FXMLLoader(HelloController.class.getResource("main-view.fxml"));
+        Parent root = loader.load();
+
+        Scene scene = new Scene(root);
+        primaryStage.setScene(scene);
+        primaryStage.setResizable(false);
+        primaryStage.show();
     }
 
     public boolean dataValidation() {
@@ -71,8 +79,13 @@ public class HelloController {
 
     public void handleGoogleLoginButton(MouseEvent mouseEvent) {
         a.setAlertType(Alert.AlertType.INFORMATION);
-        a.setHeaderText("Хедер");
-        a.setContentText("Текст");
+
+        a.setHeaderText("Инфорация | Harmony");
+        a.setContentText("Просим прощения (╥﹏╥)! Данная функцие еще не добавлена в систему. . .");
         a.show();
+    }
+
+    public void handleExitButton(ActionEvent event) {
+        primaryStage.close();
     }
 }

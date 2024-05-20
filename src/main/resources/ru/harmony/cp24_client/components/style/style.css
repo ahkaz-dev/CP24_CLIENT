@@ -23,7 +23,11 @@
     src: url("../font/Inter-SemiBold.ttf");
 }
 
+/*
 
+LOGIN WINDOW STYLE
+
+*/
 .anchor-pane {
     -fx-background-color: #FFF2E9;
 }
@@ -60,4 +64,35 @@
     -fx-font-size: 13px;
     -fx-font-family: "Inter Medium";
     -fx-text-fill: #FF473C;
+}
+
+/*
+
+CATEGORY WINDOW STYLE
+
+*/
+.anchor-pane-category {
+    -fx-background-color: #FFFFFF;
+}
+.menu-burro {
+    -fx-background-color: #FF9D55;
+}
+.vacancy-label {
+    -fx-font-size: 16px;
+    -fx-font-family: "Inter SemiBold";
+    -fx-text-fill: white;
+}
+.desc-menu-bar {
+    -fx-font-size: 13px;
+    -fx-font-family: "Inter SemiBold";
+    -fx-text-fill: white;
+    -fx-text-alignment: CENTER;
+}
+.copyright-text {
+    -fx-font-size: 8px;
+    -fx-font-family: "Inter SemiBold";
+    -fx-text-fill: white;
+}
+.category-pane-div {
+    -fx-background-color: grey;
 }
