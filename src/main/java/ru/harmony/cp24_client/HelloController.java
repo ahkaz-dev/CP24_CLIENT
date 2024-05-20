@@ -17,6 +17,7 @@ import ru.harmony.cp24_client.service.entity.UserService;
 
 import javax.swing.*;
 import java.io.IOException;
+import java.net.ConnectException;
 
 public class HelloController {
     private final UserService service = new UserService();
@@ -24,7 +25,8 @@ public class HelloController {
     public TextField usLoginText;
     public Button exitButton;
     public ImageView loginByGoogleButton;
-    public Label loginErrorLabel;
+    public Label loginErrorValidLabel;
+    public Label loginErrorConectionLabel;
     String login, password;
 
     Alert a = new Alert(Alert.AlertType.NONE);
@@ -35,12 +37,14 @@ public class HelloController {
 
     public void setPrimaryStage(Stage primaryStage) { // Метод для установки первичного окна
         this.primaryStage = primaryStage;
-        loginErrorLabel.setVisible(false);
+        loginErrorValidLabel.setVisible(false);
+
+        loginErrorConectionLabel.setVisible(!service.checkServerConnect());
     }
 
     @FXML
     private void handleLoginButton() throws IOException {
-/*        if (dataValidation()) {
+        if (dataValidation()) {
             try {
                 service.findByData(login, password);
                 FXMLLoader loader = new FXMLLoader(HelloController.class.getResource("main-view.fxml"));
@@ -50,22 +54,17 @@ public class HelloController {
                 primaryStage.setScene(scene);
                 primaryStage.setResizable(false);
                 primaryStage.show();
-            } catch (Exception e){
-                loginErrorLabel.setVisible(true);
+            }  catch (ConnectException e){
+                loginErrorConectionLabel.setVisible(true);
+            } catch (NullPointerException s){
+                loginErrorValidLabel.setVisible(true);
             }
         } else {
             a.setAlertType(Alert.AlertType.ERROR);
             a.setHeaderText("Ошибка ввода");
             a.setContentText("Данные входа отсутствуют");
             a.show();
-        }*/
-        FXMLLoader loader = new FXMLLoader(HelloController.class.getResource("main-view.fxml"));
-        Parent root = loader.load();
-
-        Scene scene = new Scene(root);
-        primaryStage.setScene(scene);
-        primaryStage.setResizable(false);
-        primaryStage.show();
+        }
     }
 
     public boolean dataValidation() {

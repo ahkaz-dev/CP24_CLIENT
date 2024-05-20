@@ -60,7 +60,7 @@ LOGIN WINDOW STYLE
 #loginByGoogleButton {
     -fx-cursor: hand;
 }
-#loginErrorLabel {
+#loginErrorValidLabel, #loginErrorConectionLabel {
     -fx-font-size: 13px;
     -fx-font-family: "Inter Medium";
     -fx-text-fill: #FF473C;

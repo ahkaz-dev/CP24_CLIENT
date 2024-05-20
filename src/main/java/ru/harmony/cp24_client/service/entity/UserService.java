@@ -11,7 +11,12 @@ import ru.harmony.cp24_client.service.ClientProperties;
 import ru.harmony.cp24_client.service.HttpService;
 import ru.harmony.cp24_client.service.JsonService;
 
+import java.io.IOException;
 import java.lang.reflect.Type;
+import java.net.MalformedURLException;
+import java.net.Socket;
+import java.net.URL;
+import java.net.URLConnection;
 
 public class UserService {
     @Getter
@@ -28,8 +33,14 @@ public class UserService {
     public boolean findByData(String login, String password) {
         String tempData = httpService.get(client_property.getAllUserData() + login + "&password=" + password);
         DataResponse<User> response = json.getObject(tempData, dataType);
-        System.out.println(response);
-
         return response.isStatus();
+    }
+
+    public boolean checkServerConnect() {
+        try (Socket socket = new Socket("localhost", 28245)) {
+            return true;
+        } catch (IOException e) {
+            return false;
+        }
     }
 }

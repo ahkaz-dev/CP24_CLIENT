@@ -36,7 +36,7 @@
          </image>
       </ImageView>
       <Label fx:id="welcomeText" layoutX="126.0" layoutY="107.0" prefHeight="40.0" prefWidth="317.0" text="Добро пожаловать" AnchorPane.bottomAnchor="520.0" AnchorPane.leftAnchor="119.0" AnchorPane.rightAnchor="633.0" AnchorPane.topAnchor="94.0" />
-      <ImageView fitHeight="19.0" fitWidth="452.0" layoutX="144.0" layoutY="389.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="191.0" AnchorPane.leftAnchor="48.0" AnchorPane.rightAnchor="569.0" AnchorPane.topAnchor="443.0">
+      <ImageView fitHeight="19.0" fitWidth="452.0" layoutX="48.0" layoutY="455.0" pickOnBounds="true" preserveRatio="true" AnchorPane.bottomAnchor="179.0" AnchorPane.leftAnchor="48.0" AnchorPane.rightAnchor="569.0" AnchorPane.topAnchor="455.0">
          <image>
             <Image url="@components/image/icons/login-by-google.png" />
          </image>
@@ -46,6 +46,7 @@
             <Image url="@components/image/icons/login-by-google-button.png" />
          </image>
       </ImageView>
-      <Label fx:id="loginErrorLabel" layoutX="48.0" layoutY="409.0" text="Ошибка входа: неправильный логин или пароль" />
+      <Label fx:id="loginErrorValidLabel" layoutX="48.0" layoutY="409.0" text="Ошибка входа: неправильный логин или пароль" />
+      <Label fx:id="loginErrorConectionLabel" layoutX="48.0" layoutY="425.0" text="Ошибка входа: отсутствует подключение к серверу" />
    </children>
 </AnchorPane>
