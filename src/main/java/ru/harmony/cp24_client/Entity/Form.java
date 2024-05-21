@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import ru.harmony.cp24_client.controller.FormController;
 
 @Getter
 @Setter
@@ -15,7 +16,6 @@ public class Form {
     private String name;
     private String surName;
     private String lastName;
-    private String fio = surName + ' ' + name + ' ' + lastName;
     private String aspSkills;
     private String workExperience;
     private String education;
@@ -24,4 +24,5 @@ public class Form {
     private String aspBirthDate;
 
     private Vacancy vacancy;
+
 }

@@ -11,4 +11,9 @@ import lombok.Setter;
 @AllArgsConstructor
 public class Spec {
     private String name;
+
+    @Override
+    public String toString() {
+        return name;
+    }
 }
