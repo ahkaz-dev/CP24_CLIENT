@@ -11,6 +11,7 @@ import ru.harmony.cp24_client.controller.FormController;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Form {
+    private Long id;
     private String formHeader;
     private String aspSpec;
     private String name;

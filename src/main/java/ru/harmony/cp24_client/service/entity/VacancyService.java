@@ -6,6 +6,7 @@ import javafx.collections.ObservableList;
 import lombok.Getter;
 import ru.harmony.cp24_client.Entity.User;
 import ru.harmony.cp24_client.Entity.Vacancy;
+import ru.harmony.cp24_client.Response.BaseResponse;
 import ru.harmony.cp24_client.Response.DataResponse;
 import ru.harmony.cp24_client.Response.ListResponse;
 import ru.harmony.cp24_client.service.ClientProperties;
@@ -38,8 +39,29 @@ public class VacancyService {
     public void add(Vacancy vacancy) {
         String tempData = httpService.post(client_property.getSaveVacancy(), json.getJson(vacancy));
         DataResponse<Vacancy> response = json.getObject(tempData, dataType);
-        if (response.isStatus()) {
+        if (response != null) {
             this.vacancy.add(response.getData());
+        } else {
+            throw new RuntimeException(response.getStatus_text());
+        }
+    }
+
+    public void update(Vacancy vacancy_new, Vacancy vacancy_main) {
+        String tempData = httpService.put(client_property.getUpdateUser(), json.getJson(vacancy_new));
+        DataResponse<Vacancy> response = json.getObject(tempData, dataType);
+        if (response.isStatus()) {
+            this.vacancy.remove(vacancy_main);
+            this.vacancy.add(vacancy_new);
+        } else {
+            throw new RuntimeException(response.getStatus_text());
+        }
+    }
+
+    public void delete(Vacancy vacancy) {
+        String tempData= httpService.delete(client_property.getDeleteVacancy(), vacancy.getId());
+        BaseResponse response = json.getObject(tempData, BaseResponse.class);
+        if (response.isStatus()) {
+            this.vacancy.remove(tempData);
         } else {
             throw new RuntimeException(response.getStatus_text());
         }

@@ -12,7 +12,7 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Vacancy {
-
+    private Long id;
     private String name;
     private String fromEmployer;
     private String wage;

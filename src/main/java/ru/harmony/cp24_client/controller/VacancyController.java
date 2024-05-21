@@ -2,16 +2,22 @@ package ru.harmony.cp24_client.controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.geometry.Insets;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.layout.GridPane;
-import javafx.util.Pair;
+import javafx.scene.input.MouseButton;
+import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 import ru.harmony.cp24_client.Entity.Spec;
 import ru.harmony.cp24_client.Entity.Vacancy;
+import ru.harmony.cp24_client.HelloApplication;
+import ru.harmony.cp24_client.controller.fuctional.AddVacancyController;
 import ru.harmony.cp24_client.service.entity.SpecService;
 import ru.harmony.cp24_client.service.entity.VacancyService;
 
+import java.io.IOException;
 import java.util.Optional;
 
 public class VacancyController {
@@ -20,6 +26,7 @@ public class VacancyController {
     private final SpecService specService = new SpecService();
     @FXML
     public ComboBox<Spec> comboBoxSpec = new ComboBox<>();
+    public Button deleteVacancyButton;
 
     @FXML
     public TableView<Vacancy> tableVIewMain;
@@ -35,7 +42,21 @@ public class VacancyController {
     public TableColumn<Vacancy, String> headCount;
     @FXML
     public TableColumn<Vacancy, String> spec;
-    public Button addNewVacancyButton;
+    public Button updateVacancyButton;
+    @FXML
+    private Button addNewVacancyButton;
+
+    private Optional<Vacancy> vacancyOptional;
+    public void setVacancy(Optional<Vacancy> vacancy) {
+        this.vacancyOptional = vacancy;
+        if (vacancy.isPresent()) {
+            if (vacancy.get().getId() != null) {
+                service.update(vacancy.get(), tableVIewMain.getSelectionModel().getSelectedItem());
+            } else {
+                service.add(vacancy.get());
+            }
+        }
+    }
 
 
     @FXML
@@ -57,70 +78,80 @@ public class VacancyController {
         tableVIewMain.setItems(service.getVacancy());
     }
 
-    public void handleAddButton(ActionEvent event) {
-        Dialog<Pair<String, String>> modalRegistration = new Dialog<>();
-        //modalRegistration.setResizable(false);
-        // setTitle | setHeaderText
+    public void handleAddButton(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(HelloApplication.class.getResource("newVacancy-view.fxml"));
+        Parent root = loader.load();
+        AddVacancyController controller = loader.getController();
+        controller.setAddNewVacancyButton(addNewVacancyButton);
+        //controller.setTableVIewMain(tableVIewMain);
+/*
+        controller.setVacancyGive(vacancyOptional);
+        controller.start();*/
 
-        ButtonType login = new ButtonType("Добавить", ButtonBar.ButtonData.OK_DONE);
-        modalRegistration.getDialogPane().getButtonTypes().addAll(login, ButtonType.CANCEL);
 
-        GridPane grid = new GridPane();
-        grid.setHgap(10);
-        grid.setVgap(10);
-        grid.setPadding(new Insets(20, 150, 10, 10));
+        Stage stage = new Stage();
+        controller.setStage(stage);
 
-        TextField headerVacancyField = new TextField();
-        headerVacancyField.setPromptText("Заголовок вакансии");
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
 
-        TextField wageField = new TextField();
-        wageField.setPromptText("ЗП");
+        addNewVacancyButton.setDisable(true);
 
-        TextField employeeField = new TextField();
-        employeeField.setPromptText("Компания");
-
-        TextField workExperienceField = new TextField();
-        workExperienceField.setPromptText("Опыт работы");
-
-        TextField headCountField = new TextField();
-        headCountField.setPromptText("Кол-во сотрудников");
-
-        comboBoxSpec.setPromptText("Специализация");
-
-        grid.add(new Label("Заголовок"), 0, 0);
-        grid.add(headerVacancyField, 1, 0);
-
-        grid.add(new Label("ЗП"), 0, 1);
-        grid.add(wageField, 1, 1);
-
-        grid.add(new Label("Компания"), 0, 2);
-        grid.add(employeeField, 1, 2);
-
-        grid.add(new Label("Опыт работы"), 0, 3);
-        grid.add(workExperienceField, 1, 3);
-
-        grid.add(new Label("Кол-во сотрудников"), 0, 4);
-        grid.add(headCountField, 1, 4);
-
-        grid.add(new Label("Специализация"), 0, 5);
-        grid.add(comboBoxSpec, 1, 5);
-
-        modalRegistration.getDialogPane().setContent(grid);
-
-//        Optional<Pair<String, String>> result = modalRegistration.showAndWait();
-
-        Vacancy vacancy = new Vacancy();
-        vacancy.setName(headerVacancyField.getText());
-        vacancy.setWage(wageField.getText());
-        vacancy.setSpec(comboBoxSpec.getSelectionModel().getSelectedItem());
-        vacancy.setHeadcount(headCountField.getText());
-        vacancy.setFromEmployer(employeeField.getText());
-        vacancy.setWorkExperience(workExperienceField.getText());
-        service.add(vacancy);
-
+        stage.showAndWait();
         tableVIewMain.getItems().clear();
         initialize();
+    }
+    public void callRefreshFunc() {
+        tableVIewMain.getItems().clear();
+        initialize();
+    }
 
-        modalRegistration.show();
+/*    @FXML
+    void onMouseClickTableView(MouseEvent event) throws IOException {
+        if (event.getButton().equals(MouseButton.PRIMARY)){
+            if(event.getClickCount() == 2) {
+                Vacancy tempVacancy = tableVIewMain.getSelectionModel().getSelectedItem();
+                FXMLLoader loader = new FXMLLoader(HelloApplication.class.getResource("newVacancy-view.fxml"));
+                Parent root = loader.load();
+                AddVacancyController controller = loader.getController();
+                controller.setVacancyGive(Optional.ofNullable(tempVacancy));
+                controller.start();
+
+                Stage stage = new Stage();
+                controller.setStage(stage);
+
+                Scene scene = new Scene(root);
+                stage.setScene(scene);
+                stage.showAndWait();
+*//*                textName.setText(tempVacancy.getName());
+                textLastName.setText(tempVacancy.getLastname());
+                textSurname.setText(tempVacancy.getSurname());*//*
+            }
+        }
+    }*/
+
+    public void handleDeleteButton(ActionEvent event) {
+        Vacancy selectedVacancy = tableVIewMain.getSelectionModel().getSelectedItem();
+        if (selectedVacancy != null) {
+            service.delete(selectedVacancy);
+            tableVIewMain.getItems().clear();
+            initialize();
+        }
+    }
+
+    public void handleUpdateButton(ActionEvent event) throws IOException {
+        Vacancy tempVacancy = tableVIewMain.getSelectionModel().getSelectedItem();
+        FXMLLoader loader = new FXMLLoader(HelloApplication.class.getResource("newVacancy-view.fxml"));
+        Parent root = loader.load();
+        AddVacancyController controller = loader.getController();
+        controller.setVacancyGive(Optional.ofNullable(tempVacancy));
+        controller.start();
+
+        Stage stage = new Stage();
+        controller.setStage(stage);
+
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.showAndWait();
     }
 }

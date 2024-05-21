@@ -11,6 +11,7 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Worker {
+    private Long id;
     private String name;
     private String surName;
     private String lastName;

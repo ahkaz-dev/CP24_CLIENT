@@ -13,6 +13,8 @@ public class ClientProperties {
 
     private String allVacancy;
     private String saveVacancy;
+    private String deleteVacancy;
+    private String getUpdateVacancy;
 
     private String allSpec;
 
@@ -35,6 +37,8 @@ public class ClientProperties {
 
             allVacancy = properties.getProperty("vacancy.getAll");
             saveVacancy = properties.getProperty("vacancy.save");
+            deleteVacancy = properties.getProperty("vacancy.delete");
+            getUpdateVacancy = properties.getProperty("vacancy.update");
 
             allForm = properties.getProperty("form.getAll");
 
