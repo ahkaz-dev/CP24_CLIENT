@@ -34,4 +34,14 @@ public class VacancyService {
             throw new RuntimeException(vacancyList.getStatus_text());
         }
     }
+
+    public void add(Vacancy vacancy) {
+        String tempData = httpService.post(client_property.getSaveVacancy(), json.getJson(vacancy));
+        DataResponse<Vacancy> response = json.getObject(tempData, dataType);
+        if (response.isStatus()) {
+            this.vacancy.add(response.getData());
+        } else {
+            throw new RuntimeException(response.getStatus_text());
+        }
+    }
 }

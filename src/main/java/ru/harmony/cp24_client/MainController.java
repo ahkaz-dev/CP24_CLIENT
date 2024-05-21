@@ -86,4 +86,11 @@ public class MainController {
         AnchorPane vista2 = (AnchorPane) fxmlLoader.load();
         anchorPaneMain.getChildren().setAll(vista2);
     }
+
+    @FXML
+    public void handelWorkerButton(MouseEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("worker-view.fxml"));
+        AnchorPane vista2 = (AnchorPane) fxmlLoader.load();
+        anchorPaneMain.getChildren().setAll(vista2);
+    }
 }

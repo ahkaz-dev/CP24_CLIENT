@@ -12,10 +12,15 @@ public class ClientProperties {
     private final Properties properties = new Properties();
 
     private String allVacancy;
+    private String saveVacancy;
 
     private String allSpec;
 
     private String allForm;
+
+    private String allWorker;
+
+    private String allAccess;
 
     private String allUser;
     private String deleteUser;
@@ -29,10 +34,15 @@ public class ClientProperties {
             properties.load(inputStream);
 
             allVacancy = properties.getProperty("vacancy.getAll");
+            saveVacancy = properties.getProperty("vacancy.save");
 
             allForm = properties.getProperty("form.getAll");
 
             allSpec = properties.getProperty("spec.getAll");
+
+            allWorker = properties.getProperty("worker.getAll");
+
+            allAccess = properties.getProperty("access.getAll");
 
             allUser = properties.getProperty("user.getAll");
             deleteUser = properties.getProperty("user.delete");

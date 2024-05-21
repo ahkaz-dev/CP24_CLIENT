@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="ru.harmony.cp24_client.controller.WorkerController"
+            prefHeight="653.0" prefWidth="887.0">
+    <TableView fx:id="tableViewWorker" editable="true" layoutX="34.0" layoutY="85.0" prefHeight="483.0" prefWidth="800.0">
+        <columns>
+            <TableColumn fx:id="name" prefWidth="137.0" resizable="false" text="Заголовок вакансии" />
+            <TableColumn fx:id="surName" prefWidth="140.0" resizable="false" text="Компания" />
+            <TableColumn fx:id="lastName" prefWidth="149.0" resizable="false" text="ЗП" />
+            <TableColumn fx:id="position" prefWidth="65.0" resizable="false" text="Опыт Р" />
+            <TableColumn fx:id="access" prefWidth="72.0" resizable="false" text="Доступ к ИС" />
+        </columns>
+    </TableView>
+</AnchorPane>

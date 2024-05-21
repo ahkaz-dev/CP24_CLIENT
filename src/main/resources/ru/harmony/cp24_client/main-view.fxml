@@ -50,7 +50,7 @@
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor></Label>
-            <ImageView fitHeight="46.0" fitWidth="46.0" layoutX="18.0" layoutY="290.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="46.0" fitWidth="46.0" layoutX="18.0" layoutY="290.0" onMouseClicked="#handelWorkerButton" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@components/image/icons/worker-button.png" />
                </image>
@@ -58,7 +58,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </ImageView>
-            <Label layoutX="70.0" layoutY="303.0" styleClass="vacancy-label" text="Персонал">
+            <Label layoutX="70.0" layoutY="303.0" onMouseClicked="#handelWorkerButton" styleClass="vacancy-label" text="Персонал">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor></Label>
