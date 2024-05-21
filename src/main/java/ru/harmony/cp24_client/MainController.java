@@ -67,8 +67,22 @@ public class MainController {
     }
 
     @FXML
+    public void handleGoToMainView(MouseEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("mainPane-view.fxml"));
+        AnchorPane vista2 = (AnchorPane) fxmlLoader.load();
+        anchorPaneMain.getChildren().setAll(vista2);
+    }
+
+    @FXML
     public void handeIVacancyButton(MouseEvent event) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("vacancy-view.fxml"));
+        AnchorPane vista2 = (AnchorPane) fxmlLoader.load();
+        anchorPaneMain.getChildren().setAll(vista2);
+    }
+
+    @FXML
+    public void handelFormButton(MouseEvent event) throws IOException {
+        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("form-view.fxml"));
         AnchorPane vista2 = (AnchorPane) fxmlLoader.load();
         anchorPaneMain.getChildren().setAll(vista2);
     }

@@ -5,6 +5,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.util.List;
+
 @Getter
 @Setter
 @NoArgsConstructor
@@ -17,7 +19,7 @@ public class Vacancy {
     private String workExperience;
     private String headcount;
 
-    // place for spec
+    private Spec spec;
 
 
     @Override
@@ -28,6 +30,7 @@ public class Vacancy {
                 ", wage='" + wage + '\'' +
                 ", workExperience='" + workExperience + '\'' +
                 ", headcount='" + headcount + '\'' +
+                ", spec=" + spec +
                 '}';
     }
 }

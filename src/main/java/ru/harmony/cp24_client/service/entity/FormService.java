@@ -4,7 +4,7 @@ import com.google.gson.reflect.TypeToken;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import lombok.Getter;
-import ru.harmony.cp24_client.Entity.User;
+import ru.harmony.cp24_client.Entity.Form;
 import ru.harmony.cp24_client.Entity.Vacancy;
 import ru.harmony.cp24_client.Response.DataResponse;
 import ru.harmony.cp24_client.Response.ListResponse;
@@ -13,25 +13,24 @@ import ru.harmony.cp24_client.service.HttpService;
 import ru.harmony.cp24_client.service.JsonService;
 
 import java.lang.reflect.Type;
-import java.util.List;
 
-public class VacancyService {
+public class FormService {
     @Getter
-    private ObservableList<Vacancy> vacancy = FXCollections.observableArrayList();
+    private ObservableList<Form> forms = FXCollections.observableArrayList();
     private final HttpService httpService = new HttpService();
     JsonService json = new JsonService();
     ClientProperties client_property = new ClientProperties();
 
-    private Type dataType = new TypeToken<DataResponse<Vacancy>>() {}.getType();
-    private Type listType = new TypeToken<ListResponse<Vacancy>>() {}.getType();
+    private Type dataType = new TypeToken<DataResponse<Form>>() {}.getType();
+    private Type listType = new TypeToken<ListResponse<Form>>() {}.getType();
 
     public void getAll() {
-        ListResponse<Vacancy> vacancyList = new ListResponse<>();
-        vacancyList = json.getObject(httpService.get(client_property.getAllVacancy()), listType);
-        if (vacancyList.isStatus()) {
-            this.vacancy.addAll(vacancyList.getData());
+        ListResponse<Form> formList = new ListResponse<>();
+        formList = json.getObject(httpService.get(client_property.getAllForm()), listType);
+        if (formList.isStatus()) {
+            this.forms.addAll(formList.getData());
         } else {
-            throw new RuntimeException(vacancyList.getStatus_text());
+            throw new RuntimeException(formList.getStatus_text());
         }
     }
 }

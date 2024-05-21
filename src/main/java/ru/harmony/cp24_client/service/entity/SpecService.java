@@ -4,34 +4,37 @@ import com.google.gson.reflect.TypeToken;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import lombok.Getter;
+import ru.harmony.cp24_client.Entity.Spec;
 import ru.harmony.cp24_client.Entity.User;
-import ru.harmony.cp24_client.Entity.Vacancy;
 import ru.harmony.cp24_client.Response.DataResponse;
 import ru.harmony.cp24_client.Response.ListResponse;
 import ru.harmony.cp24_client.service.ClientProperties;
 import ru.harmony.cp24_client.service.HttpService;
 import ru.harmony.cp24_client.service.JsonService;
 
+import java.io.IOException;
 import java.lang.reflect.Type;
-import java.util.List;
+import java.net.Socket;
 
-public class VacancyService {
+public class SpecService {
     @Getter
-    private ObservableList<Vacancy> vacancy = FXCollections.observableArrayList();
+    private ObservableList<Spec> spec = FXCollections.observableArrayList();
     private final HttpService httpService = new HttpService();
     JsonService json = new JsonService();
     ClientProperties client_property = new ClientProperties();
 
-    private Type dataType = new TypeToken<DataResponse<Vacancy>>() {}.getType();
-    private Type listType = new TypeToken<ListResponse<Vacancy>>() {}.getType();
+    private Type dataType = new TypeToken<DataResponse<User>>() {
+    }.getType();
+    private Type listType = new TypeToken<ListResponse<User>>() {
+    }.getType();
 
     public void getAll() {
-        ListResponse<Vacancy> vacancyList = new ListResponse<>();
-        vacancyList = json.getObject(httpService.get(client_property.getAllVacancy()), listType);
-        if (vacancyList.isStatus()) {
-            this.vacancy.addAll(vacancyList.getData());
+        ListResponse<Spec> genreList = new ListResponse<>();
+        genreList = json.getObject(httpService.get(client_property.getAllSpec()), listType);
+        if (genreList.isStatus()) {
+            this.spec.addAll(genreList.getData());
         } else {
-            throw new RuntimeException(vacancyList.getStatus_text());
+            throw new RuntimeException(genreList.getStatus_text());
         }
     }
 }

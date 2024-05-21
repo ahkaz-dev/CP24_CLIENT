@@ -13,6 +13,10 @@ public class ClientProperties {
 
     private String allVacancy;
 
+    private String allSpec;
+
+    private String allForm;
+
     private String allUser;
     private String deleteUser;
     private String saveUser;
@@ -25,6 +29,10 @@ public class ClientProperties {
             properties.load(inputStream);
 
             allVacancy = properties.getProperty("vacancy.getAll");
+
+            allForm = properties.getProperty("form.getAll");
+
+            allSpec = properties.getProperty("spec.getAll");
 
             allUser = properties.getProperty("user.getAll");
             deleteUser = properties.getProperty("user.delete");

@@ -1,11 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.harmony.cp24_client.controller.VacancyController">
-   <children>
-      <ListView fx:id="dataList" layoutX="80.0" layoutY="100.0" prefHeight="200.0" prefWidth="200.0" />
-   </children>
+<AnchorPane prefHeight="653.0" prefWidth="887.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.harmony.cp24_client.controller.VacancyController">
+    <TableView fx:id="tableVIewMain" editable="true" layoutX="34.0" layoutY="85.0" prefHeight="483.0" prefWidth="800.0">
+      <columns>
+          <TableColumn fx:id="headerVacancy" prefWidth="137.0" resizable="false" text="Заголовок вакансии" />
+          <TableColumn fx:id="employee" prefWidth="140.0" resizable="false" text="Компания" />
+          <TableColumn fx:id="wage" prefWidth="149.0" resizable="false" text="ЗП" />
+          <TableColumn fx:id="workExperience" prefWidth="65.0" resizable="false" text="Опыт Р" />
+          <TableColumn fx:id="headCount" prefWidth="72.0" resizable="false" text="Кол-сотр" />
+         <TableColumn fx:id="spec" prefWidth="236.0" resizable="false" text="Специализация" />
+      </columns>
+    </TableView>
 </AnchorPane>

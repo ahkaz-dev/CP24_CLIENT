@@ -53,8 +53,8 @@ public class HelloController {
     private void handleLoginButton() throws IOException {
         if (dataValidation()) {
             try {
-                 primaryStage.close();
-                service.findByData(login, password);
+                // primaryStage.close();
+                //service.findByData(login, password);
                 FXMLLoader loader = new FXMLLoader(MainController.class.getResource("main-view.fxml"));
                 Parent root = loader.load();
 

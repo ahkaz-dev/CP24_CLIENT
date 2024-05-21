@@ -18,10 +18,13 @@
                   <Image url="@components/image/backgrounds/menu-bar-background.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="34.0" fitWidth="132.0" layoutX="26.0" layoutY="27.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="34.0" fitWidth="132.0" layoutX="26.0" layoutY="27.0" onMouseClicked="#handleGoToMainView" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@components/image/icons/logo-menu-bar.png" />
                </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
             </ImageView>
             <ImageView fitHeight="46.0" fitWidth="46.0" layoutX="18.0" layoutY="151.0" onMouseClicked="#handeIVacancyButton" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -35,7 +38,7 @@
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor></Label>
-            <ImageView fitHeight="46.0" fitWidth="46.0" layoutX="18.0" layoutY="219.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="46.0" fitWidth="46.0" layoutX="18.0" layoutY="219.0" onMouseClicked="#handelFormButton" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@components/image/icons/form-button.png" />
                </image>
@@ -43,7 +46,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </ImageView>
-            <Label layoutX="70.0" layoutY="232.0" styleClass="vacancy-label" text="Анкеты">
+            <Label layoutX="70.0" layoutY="232.0" onMouseClicked="#handelFormButton" styleClass="vacancy-label" text="Анкеты">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor></Label>
