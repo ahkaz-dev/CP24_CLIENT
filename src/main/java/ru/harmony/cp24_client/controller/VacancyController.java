@@ -85,9 +85,7 @@ public class VacancyController {
         Parent root = loader.load();
         AddVacancyController controller = loader.getController();
         controller.setAddNewVacancyButton(addNewVacancyButton, updateVacancyButton);
-        //controller.setTableVIewMain(tableVIewMain);
-/*
-        controller.setVacancyGive(vacancyOptional);
+/*        controller.setVacancyGive(vacancyOptional);
         controller.start();*/
 
 

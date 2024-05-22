@@ -47,7 +47,7 @@ public class VacancyService {
     }
 
     public void update(Vacancy vacancy_new, Vacancy vacancy_main) {
-        String tempData = httpService.put(client_property.getUpdateUser(), json.getJson(vacancy_new));
+        String tempData = httpService.put(client_property.getGetUpdateVacancy(), json.getJson(vacancy_new));
         DataResponse<Vacancy> response = json.getObject(tempData, dataType);
         if (response.isStatus()) {
             this.vacancy.remove(vacancy_main);

@@ -92,17 +92,25 @@ public class AddVacancyController {
             tempVacancy.setWage(wageField.getText());
             tempVacancy.setName(headerVacancyField.getText());
             try {
-                try {
+                if (vacancyGive.isEmpty()) {
+                    service.add(tempVacancy);
+                    stage.close();
+
+                } else {
+                    tempVacancy.setId(vacancyGive.get().getId());
+                    service.update(tempVacancy, vacancyGive.get());
+                    stage.close();
+                }
+/*                try {
                     service.add(tempVacancy);
                     stage.close();
                 } catch (Exception e) {
-                    service.update(tempVacancy, vacancy);
-                }
+                    service.update(tempVacancy, vacancyGive.get());
+                }*/
                 if (addNewVacancyButton != null) {
                     addNewVacancyButton.setDisable(false);
                     updateVacancyButton.setDisable(false);
                 }
-//            controller.callRefreshFunc();
             } catch (Exception e) {
                 System.out.println(e);
             }
