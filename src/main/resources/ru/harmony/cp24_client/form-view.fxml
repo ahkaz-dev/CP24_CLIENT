@@ -4,8 +4,9 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 
+<?import javafx.scene.control.Button?>
 <AnchorPane prefHeight="653.0" prefWidth="887.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.harmony.cp24_client.controller.FormController">
-    <TableView fx:id="tableViewForm" editable="true" layoutX="34.0" layoutY="85.0" prefHeight="483.0" prefWidth="800.0">
+    <TableView fx:id="tableViewForm" editable="true" layoutX="34.0" layoutY="85.0" onMouseClicked="#onMouseClickTableView" prefHeight="483.0" prefWidth="800.0">
         <columns>
             <TableColumn fx:id="formHeader" prefWidth="137.0" resizable="false" text="Заголовок анкеты" />
             <TableColumn fx:id="formAspSpec" prefWidth="140.0" resizable="false" text="Специальность соискт." />
@@ -17,4 +18,7 @@
          <TableColumn fx:id="formAspBirthDate" prefWidth="56.0" resizable="false" text="Дата род" />
         </columns>
     </TableView>
+    <Button fx:id="addNewFormButton" layoutX="115.0" layoutY="589.0" mnemonicParsing="false" onAction="#handleAddFormButton" text="Добавить" />
+    <Button fx:id="updateFormButton" layoutX="221.0" layoutY="589.0" mnemonicParsing="false" onAction="#handleUpdateFormButton" text="Изменить" />
+    <Button fx:id="deleteFormButton" layoutX="307.0" layoutY="589.0" mnemonicParsing="false" onAction="#handleDeleteFormButton" text="Удалить" />
 </AnchorPane>

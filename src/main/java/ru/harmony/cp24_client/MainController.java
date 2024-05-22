@@ -54,16 +54,10 @@ public class MainController {
         Scene scene = new Scene(root);
         primaryStage.setScene(scene);
         primaryStage.show();
-
-        // Close main window
-        //primaryStage.close();
     }
 
     @FXML
     public void handeITcontinueButton(ActionEvent actionEvent) throws IOException {
-/*        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("category-it.fxml"));
-        AnchorPane vista2 = (AnchorPane) fxmlLoader.load();
-        anchorPaneMain.getChildren().setAll(vista2);*/
     }
 
     @FXML

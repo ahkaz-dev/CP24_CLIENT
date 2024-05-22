@@ -39,6 +39,7 @@ public class AddVacancyController {
     private Optional<Vacancy> vacancyGive;
 
     public void start() {
+        if (vacancyGive == null)  vacancyGive = Optional.empty();
         if(vacancyGive.isPresent()) {
             headCountField.setText(vacancyGive.get().getHeadcount());
             workExperienceField.setText(vacancyGive.get().getWorkExperience());
@@ -49,8 +50,8 @@ public class AddVacancyController {
 
             addNewVacancyModal.setText("Изменить");
             System.out.println(vacancyGive);
-            }
         }
+    }
 
 
     public void setStage(Stage stage) {
@@ -91,22 +92,16 @@ public class AddVacancyController {
             tempVacancy.setFromEmployer(employeeField.getText());
             tempVacancy.setWage(wageField.getText());
             tempVacancy.setName(headerVacancyField.getText());
+            start();
             try {
                 if (vacancyGive.isEmpty()) {
                     service.add(tempVacancy);
                     stage.close();
-
                 } else {
                     tempVacancy.setId(vacancyGive.get().getId());
                     service.update(tempVacancy, vacancyGive.get());
                     stage.close();
                 }
-/*                try {
-                    service.add(tempVacancy);
-                    stage.close();
-                } catch (Exception e) {
-                    service.update(tempVacancy, vacancyGive.get());
-                }*/
                 if (addNewVacancyButton != null) {
                     addNewVacancyButton.setDisable(false);
                     updateVacancyButton.setDisable(false);

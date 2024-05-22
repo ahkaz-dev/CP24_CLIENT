@@ -26,4 +26,21 @@ public class Form {
 
     private Vacancy vacancy;
 
+    @Override
+    public String toString() {
+        return "Form{" +
+                "id=" + id +
+                ", formHeader='" + formHeader + '\'' +
+                ", aspSpec='" + aspSpec + '\'' +
+                ", name='" + name + '\'' +
+                ", surName='" + surName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", aspSkills='" + aspSkills + '\'' +
+                ", workExperience='" + workExperience + '\'' +
+                ", education='" + education + '\'' +
+                ", workBefore='" + workBefore + '\'' +
+                ", aspBirthDate='" + aspBirthDate + '\'' +
+                ", vacancy=" + vacancy +
+                '}';
+    }
 }

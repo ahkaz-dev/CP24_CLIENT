@@ -19,6 +19,9 @@ public class ClientProperties {
     private String allSpec;
 
     private String allForm;
+    private String saveForm;
+    private String deleteForm;
+    private String updateForm;
 
     private String allWorker;
 
@@ -41,6 +44,9 @@ public class ClientProperties {
             getUpdateVacancy = properties.getProperty("vacancy.update");
 
             allForm = properties.getProperty("form.getAll");
+            saveForm = properties.getProperty("form.save");
+            updateForm = properties.getProperty("form.update");
+            deleteForm = properties.getProperty("form.delete");
 
             allSpec = properties.getProperty("spec.getAll");
 
