@@ -74,6 +74,21 @@ CATEGORY WINDOW STYLE
 .anchor-pane-category {
     -fx-background-color: #FFFFFF;
 }
+.hello-label {
+    -fx-font-size: 16px;
+    -fx-font-family: "Inter Medium";
+    -fx-text-fill: #636363;
+}
+.help-label {
+    -fx-font-size: 12px;
+    -fx-font-family: "Inter Medium";
+    -fx-text-fill: #636363;
+}
+.help-label-link {
+    -fx-font-size: 12px;
+    -fx-font-family: "Inter Medium";
+    -fx-text-fill: #FE9C43;
+}
 .menu-burro {
     -fx-background-color: #FF9D55;
 }

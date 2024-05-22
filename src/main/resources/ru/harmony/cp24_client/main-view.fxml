@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.Cursor?>
-<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -100,63 +99,14 @@
       </Pane>
       <AnchorPane fx:id="anchorPaneMain" layoutX="182.0" prefHeight="653.0" prefWidth="887.0">
          <children>
-            <Pane layoutX="83.0" layoutY="111.0" onMouseClicked="#handeITcontinueButton" prefHeight="175.0" prefWidth="175.0" styleClass="category-it-div">
-               <children>
-                  <Button layoutX="14.0" layoutY="135.0" mnemonicParsing="false" onAction="#handeITcontinueButton" prefHeight="26.0" prefWidth="102.0" styleClass="category-ok-button" text="Продолжить" />
-               </children>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </Pane>
-            <Pane layoutX="351.0" layoutY="111.0" prefHeight="175.0" prefWidth="175.0" styleClass="category-digMarketing-div">
-               <children>
-                  <Button layoutX="14.0" layoutY="135.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="102.0" styleClass="category-ok-button" text="Продолжить">
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </Button>
-               </children>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </Pane>
-            <Pane layoutX="624.0" layoutY="111.0" prefHeight="175.0" prefWidth="175.0" styleClass="category-health-div">
-               <children>
-                  <Button layoutX="14.0" layoutY="135.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="102.0" styleClass="category-ok-button" text="Продолжить">
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </Button>
-               </children>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </Pane>
-            <Pane layoutX="83.0" layoutY="351.0" prefHeight="175.0" prefWidth="175.0" styleClass="category-security-div">
-               <children>
-                  <Button layoutX="11.0" layoutY="138.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="102.0" styleClass="category-ok-button" text="Продолжить">
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </Button>
-               </children>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </Pane>
-            <Pane layoutX="351.0" layoutY="351.0" prefHeight="175.0" prefWidth="175.0" styleClass="category-science-div">
-               <children>
-                  <Button layoutX="12.0" layoutY="141.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="102.0" styleClass="category-ok-button" text="Продолжить">
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor>
-                  </Button>
-               </children>
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </Pane>
-            <Pane layoutX="630.0" layoutY="351.0" prefHeight="175.0" prefWidth="175.0" styleClass="category-none-div" />
+            <ImageView fitHeight="274.0" fitWidth="406.0" layoutX="223.0" layoutY="100.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@components/image/backgrounds/main-image-hello.png" />
+               </image>
+            </ImageView>
+            <Label contentDisplay="CENTER" layoutX="229.0" layoutY="326.0" prefHeight="71.0" prefWidth="367.0" styleClass="hello-label" text="Добро пожаловать! Выберите категорию из бокового меню, чтобы начать работу!" textAlignment="CENTER" textOverrun="CLIP" wrapText="true" />
+            <Label contentDisplay="CENTER" layoutX="239.0" layoutY="538.0" prefHeight="30.0" prefWidth="283.0" styleClass="help-label" text="Если у вас появились вопросы обращайтесь в " textAlignment="CENTER" textOverrun="CLIP" wrapText="true" />
+            <Label contentDisplay="CENTER" layoutX="522.0" layoutY="538.0" prefHeight="30.0" prefWidth="52.0" styleClass="help-label-link" text="справку" textAlignment="CENTER" textOverrun="CLIP" wrapText="true" />
          </children>
       </AnchorPane>
    </children>
