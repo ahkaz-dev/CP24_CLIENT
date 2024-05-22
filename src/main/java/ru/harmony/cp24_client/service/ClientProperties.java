@@ -24,6 +24,10 @@ public class ClientProperties {
     private String updateForm;
 
     private String allWorker;
+    private String saveWorker;
+    private String deleteWorker;
+    private String updateWorker;
+
 
     private String allAccess;
 
@@ -51,6 +55,9 @@ public class ClientProperties {
             allSpec = properties.getProperty("spec.getAll");
 
             allWorker = properties.getProperty("worker.getAll");
+            saveWorker = properties.getProperty("worker.save");
+            updateWorker = properties.getProperty("worker.update");
+            deleteWorker = properties.getProperty("worker.delete");
 
             allAccess = properties.getProperty("access.getAll");
 
