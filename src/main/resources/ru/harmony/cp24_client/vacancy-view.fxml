@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 
 <AnchorPane prefHeight="653.0" prefWidth="887.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.harmony.cp24_client.controller.VacancyController">
-    <TableView fx:id="tableVIewMain" editable="true" layoutX="34.0" layoutY="85.0" prefHeight="483.0" prefWidth="800.0">
+    <TableView fx:id="tableVIewMain" editable="true" focusTraversable="false" layoutX="34.0" layoutY="85.0" onMouseClicked="#onMouseClickTableView" prefHeight="483.0" prefWidth="800.0">
       <columns>
           <TableColumn fx:id="headerVacancy" prefWidth="137.0" resizable="false" text="Заголовок вакансии" />
           <TableColumn fx:id="employee" prefWidth="140.0" resizable="false" text="Компания" />

@@ -76,13 +76,15 @@ public class VacancyController {
 
         comboBoxSpec.setItems(specService.getSpec());
         tableVIewMain.setItems(service.getVacancy());
+        updateVacancyButton.setVisible(true);
+        updateVacancyButton.setDisable(true);
     }
 
     public void handleAddButton(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(HelloApplication.class.getResource("newVacancy-view.fxml"));
         Parent root = loader.load();
         AddVacancyController controller = loader.getController();
-        controller.setAddNewVacancyButton(addNewVacancyButton);
+        controller.setAddNewVacancyButton(addNewVacancyButton, updateVacancyButton);
         //controller.setTableVIewMain(tableVIewMain);
 /*
         controller.setVacancyGive(vacancyOptional);
@@ -96,6 +98,7 @@ public class VacancyController {
         stage.setScene(scene);
 
         addNewVacancyButton.setDisable(true);
+        updateVacancyButton.setDisable(true);
 
         stage.showAndWait();
         tableVIewMain.getItems().clear();
@@ -106,29 +109,16 @@ public class VacancyController {
         initialize();
     }
 
-/*    @FXML
+    @FXML
     void onMouseClickTableView(MouseEvent event) throws IOException {
         if (event.getButton().equals(MouseButton.PRIMARY)){
             if(event.getClickCount() == 2) {
-                Vacancy tempVacancy = tableVIewMain.getSelectionModel().getSelectedItem();
-                FXMLLoader loader = new FXMLLoader(HelloApplication.class.getResource("newVacancy-view.fxml"));
-                Parent root = loader.load();
-                AddVacancyController controller = loader.getController();
-                controller.setVacancyGive(Optional.ofNullable(tempVacancy));
-                controller.start();
-
-                Stage stage = new Stage();
-                controller.setStage(stage);
-
-                Scene scene = new Scene(root);
-                stage.setScene(scene);
-                stage.showAndWait();
-*//*                textName.setText(tempVacancy.getName());
-                textLastName.setText(tempVacancy.getLastname());
-                textSurname.setText(tempVacancy.getSurname());*//*
+                if (tableVIewMain.getSelectionModel().getSelectedItem() != null) {
+                    updateVacancyButton.setDisable(false);
+                }
             }
         }
-    }*/
+    }
 
     public void handleDeleteButton(ActionEvent event) {
         Vacancy selectedVacancy = tableVIewMain.getSelectionModel().getSelectedItem();
@@ -145,13 +135,20 @@ public class VacancyController {
         Parent root = loader.load();
         AddVacancyController controller = loader.getController();
         controller.setVacancyGive(Optional.ofNullable(tempVacancy));
+        controller.setAddNewVacancyButton(addNewVacancyButton, updateVacancyButton);
         controller.start();
 
         Stage stage = new Stage();
         controller.setStage(stage);
 
+        addNewVacancyButton.setDisable(true);
+        updateVacancyButton.setDisable(true);
+
         Scene scene = new Scene(root);
         stage.setScene(scene);
         stage.showAndWait();
+
+        tableVIewMain.getItems().clear();
+        initialize();
     }
 }

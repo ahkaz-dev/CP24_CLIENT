@@ -31,6 +31,7 @@ public class AddVacancyController {
 
     VacancyController controller = new VacancyController();
     private Button addNewVacancyButton;
+    private Button updateVacancyButton;
     private Vacancy vacancy;
 
     @Setter
@@ -66,8 +67,9 @@ public class AddVacancyController {
         comboBoxSpec.setItems(specService.getSpec());
     }
 
-    public void setAddNewVacancyButton(Button addNewVacancyButton) {
+    public void setAddNewVacancyButton(Button addNewVacancyButton, Button updateVacancyButton) {
         this.addNewVacancyButton = addNewVacancyButton;
+        this.updateVacancyButton = updateVacancyButton;
     }
 
     public void setVacancy(Optional<Vacancy> vacancyGive) {
@@ -90,11 +92,15 @@ public class AddVacancyController {
             tempVacancy.setWage(wageField.getText());
             tempVacancy.setName(headerVacancyField.getText());
             try {
-                service.add(tempVacancy);
-                stage.close();
-
+                try {
+                    service.add(tempVacancy);
+                    stage.close();
+                } catch (Exception e) {
+                    service.update(tempVacancy, vacancy);
+                }
                 if (addNewVacancyButton != null) {
                     addNewVacancyButton.setDisable(false);
+                    updateVacancyButton.setDisable(false);
                 }
 //            controller.callRefreshFunc();
             } catch (Exception e) {
@@ -108,8 +114,9 @@ public class AddVacancyController {
 
     public void handlerCancelButton(ActionEvent event) {
         stage.close();
-        if (addNewVacancyButton != null) {
+        if (addNewVacancyButton != null && updateVacancyButton != null) {
             addNewVacancyButton.setDisable(false);
+            updateVacancyButton.setDisable(false);
         }
     }
 }
