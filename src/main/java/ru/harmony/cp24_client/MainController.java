@@ -76,12 +76,13 @@ public class MainController {
 
     @FXML
     public void handeHelpButton(MouseEvent event) throws IOException {
-        Alert a = new Alert(Alert.AlertType.INFORMATION);
+/*        Alert a = new Alert(Alert.AlertType.INFORMATION);
         a.setAlertType(Alert.AlertType.INFORMATION);
 
         a.setHeaderText("Информация | Harmony");
         a.setContentText("Данная функцие еще не добавлена в систему");
-        a.show();
+        a.show();*/
+        Runtime.getRuntime().exec("hh.exe C:help.chm");
     }
 
     @FXML
