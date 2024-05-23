@@ -17,6 +17,7 @@ import ru.harmony.cp24_client.Entity.Worker;
 import ru.harmony.cp24_client.HelloApplication;
 import ru.harmony.cp24_client.controller.fuctional.AddFormController;
 import ru.harmony.cp24_client.controller.fuctional.AddWorkerController;
+import ru.harmony.cp24_client.service.entity.UserService;
 import ru.harmony.cp24_client.service.entity.WorkerService;
 
 import java.io.IOException;
@@ -31,13 +32,37 @@ public class WorkerController {
     public TableColumn<Worker, String> access;
 
     private final WorkerService service = new WorkerService();
+    private final UserService userService = new UserService();
     public Button addNewWorkerButton;
     public Button updateWorkerButton;
     public Button deleteWorkerButton;
 
+    static private String login;
+    static private String password;
+
+    public void setLogin(String login) {
+        WorkerController.login = login;
+    }
+
+    public void setPassword(String password) {
+        WorkerController.password = password;
+    }
+
+    public void checkAccess() {
+        if (userService.findByDataAccess(login, password)) {
+            addNewWorkerButton.setDisable(false);
+            updateWorkerButton.setDisable(true);
+            deleteWorkerButton.setDisable(false);
+        } else {
+            addNewWorkerButton.setDisable(true);
+            updateWorkerButton.setDisable(true);
+            deleteWorkerButton.setDisable(true);
+        }
+    }
 
     @FXML
     private void initialize() {
+        checkAccess();
         try {
             service.getAll();
         } catch (Exception e ) {
@@ -52,10 +77,12 @@ public class WorkerController {
         tableViewWorker.setItems(service.getWorker());
     }
 
+
     public void handleAddWorkerButton(ActionEvent event) throws IOException {
+        checkAccess();
         FXMLLoader loader = new FXMLLoader(HelloApplication.class.getResource("new-worker.fxml"));
         Parent root = loader.load();
-        AddFormController controller = loader.getController();
+        AddWorkerController controller = loader.getController();
         controller.setButtons(addNewWorkerButton, updateWorkerButton);
 
         Stage stage = new Stage();
@@ -78,13 +105,14 @@ public class WorkerController {
         if (event.getButton().equals(MouseButton.PRIMARY)){
             if(event.getClickCount() == 2) {
                 if (tableViewWorker.getSelectionModel().getSelectedItem() != null) {
-                    updateWorkerButton.setDisable(false);
+                    if (userService.findByDataAccess(login, password)) updateWorkerButton.setDisable(false);
                 }
             }
         }
     }
 
-    public void handleUpdateWorkerButton(ActionEvent event) {
+    public void handleDeleteWorkerButton(ActionEvent event) {
+        checkAccess();
         Worker selectedWorker = tableViewWorker.getSelectionModel().getSelectedItem();
         if (selectedWorker != null) {
             service.delete(selectedWorker);
@@ -93,9 +121,10 @@ public class WorkerController {
         }
     }
 
-    public void handleDeleteWorkerButton(ActionEvent event) throws IOException {
+    public void handleUpdateWorkerButton(ActionEvent event) throws IOException {
+        checkAccess();
         Worker tempWorker = tableViewWorker.getSelectionModel().getSelectedItem();
-        FXMLLoader loader = new FXMLLoader(HelloApplication.class.getResource("new-form.fxml"));
+        FXMLLoader loader = new FXMLLoader(HelloApplication.class.getResource("new-worker.fxml"));
         Parent root = loader.load();
         AddWorkerController controller = loader.getController();
         controller.setWorker(Optional.ofNullable(tempWorker));

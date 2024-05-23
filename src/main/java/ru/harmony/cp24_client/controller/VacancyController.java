@@ -15,6 +15,7 @@ import ru.harmony.cp24_client.Entity.Vacancy;
 import ru.harmony.cp24_client.HelloApplication;
 import ru.harmony.cp24_client.controller.fuctional.AddVacancyController;
 import ru.harmony.cp24_client.service.entity.SpecService;
+import ru.harmony.cp24_client.service.entity.UserService;
 import ru.harmony.cp24_client.service.entity.VacancyService;
 
 import java.io.IOException;
@@ -24,9 +25,9 @@ public class VacancyController {
 
     private final VacancyService service = new VacancyService();
     private final SpecService specService = new SpecService();
+    private final UserService userService = new UserService();
     @FXML
     public ComboBox<Spec> comboBoxSpec = new ComboBox<>();
-    public Button deleteVacancyButton;
 
     @FXML
     public TableView<Vacancy> tableVIewMain;
@@ -42,9 +43,13 @@ public class VacancyController {
     public TableColumn<Vacancy, String> headCount;
     @FXML
     public TableColumn<Vacancy, String> spec;
-    public Button updateVacancyButton;
     @FXML
-    private Button addNewVacancyButton;
+    private Button updateVacancyButton = new Button();
+    @FXML
+    private Button addNewVacancyButton = new Button();
+    @FXML
+    private Button deleteVacancyButton = new Button();
+
 
     private Optional<Vacancy> vacancyOptional;
     public void setVacancy(Optional<Vacancy> vacancy) {
@@ -59,8 +64,40 @@ public class VacancyController {
     }
 
 
+    static private String login;
+    static private String password;
+
+    public void setLogin(String login) {
+        VacancyController.login = login;
+    }
+
+    public void setPassword(String password) {
+        VacancyController.password = password;
+    }
+
+    public String getLogin() {
+        return login;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void checkAccess() {
+        if (userService.findByDataAccess(login, password)) {
+            addNewVacancyButton.setDisable(false);
+            updateVacancyButton.setDisable(true);
+            deleteVacancyButton.setDisable(false);
+        } else {
+            addNewVacancyButton.setDisable(true);
+            updateVacancyButton.setDisable(true);
+            deleteVacancyButton.setDisable(true);
+        }
+    }
+
     @FXML
     private void initialize() {
+        checkAccess();
         try {
             service.getAll();
             specService.getAll();
@@ -76,18 +113,17 @@ public class VacancyController {
 
         comboBoxSpec.setItems(specService.getSpec());
         tableVIewMain.setItems(service.getVacancy());
-        updateVacancyButton.setVisible(true);
-        updateVacancyButton.setDisable(true);
+/*        updateVacancyButton.setVisible(true);
+        updateVacancyButton.setDisable(true);*/
+        System.out.println(login + " " + password);
     }
 
     public void handleAddButton(ActionEvent event) throws IOException {
+        checkAccess();
         FXMLLoader loader = new FXMLLoader(HelloApplication.class.getResource("newVacancy-view.fxml"));
         Parent root = loader.load();
         AddVacancyController controller = loader.getController();
         controller.setAddNewVacancyButton(addNewVacancyButton, updateVacancyButton);
-/*        controller.setVacancyGive(vacancyOptional);
-        controller.start();*/
-
 
         Stage stage = new Stage();
         controller.setStage(stage);
@@ -95,12 +131,10 @@ public class VacancyController {
         Scene scene = new Scene(root);
         stage.setScene(scene);
 
-        addNewVacancyButton.setDisable(true);
-        updateVacancyButton.setDisable(true);
-
         stage.showAndWait();
         tableVIewMain.getItems().clear();
         initialize();
+
     }
     public void callRefreshFunc() {
         tableVIewMain.getItems().clear();
@@ -112,13 +146,14 @@ public class VacancyController {
         if (event.getButton().equals(MouseButton.PRIMARY)){
             if(event.getClickCount() == 2) {
                 if (tableVIewMain.getSelectionModel().getSelectedItem() != null) {
-                    updateVacancyButton.setDisable(false);
+                    if (userService.findByDataAccess(login, password)) updateVacancyButton.setDisable(false);
                 }
             }
         }
     }
 
     public void handleDeleteButton(ActionEvent event) {
+        checkAccess();
         Vacancy selectedVacancy = tableVIewMain.getSelectionModel().getSelectedItem();
         if (selectedVacancy != null) {
             service.delete(selectedVacancy);
@@ -128,19 +163,21 @@ public class VacancyController {
     }
 
     public void handleUpdateButton(ActionEvent event) throws IOException {
+        checkAccess();
         Vacancy tempVacancy = tableVIewMain.getSelectionModel().getSelectedItem();
         FXMLLoader loader = new FXMLLoader(HelloApplication.class.getResource("newVacancy-view.fxml"));
         Parent root = loader.load();
         AddVacancyController controller = loader.getController();
         controller.setVacancyGive(Optional.ofNullable(tempVacancy));
+        addNewVacancyButton.setDisable(true);
         controller.setAddNewVacancyButton(addNewVacancyButton, updateVacancyButton);
         controller.start();
 
         Stage stage = new Stage();
         controller.setStage(stage);
 
-        addNewVacancyButton.setDisable(true);
-        updateVacancyButton.setDisable(true);
+/*        addNewVacancyButton.setDisable(true);
+        updateVacancyButton.setDisable(true);*/
 
         Scene scene = new Scene(root);
         stage.setScene(scene);

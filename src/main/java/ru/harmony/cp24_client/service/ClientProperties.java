@@ -36,6 +36,7 @@ public class ClientProperties {
     private String saveUser;
     private String updateUser;
     private String allUserData;
+    private String allUserDataByAccess;
 
     public ClientProperties() {
         try (InputStream inputStream = HelloApplication.class.getClassLoader().getResourceAsStream("config.properties")) {
@@ -66,7 +67,7 @@ public class ClientProperties {
             saveUser = properties.getProperty("user.save");
             updateUser = properties.getProperty("user.update");
             allUserData = properties.getProperty("user.getData");
-
+            allUserDataByAccess = properties.getProperty("user.getDataByAccess");
         } catch (IOException e) {
             e.printStackTrace();
         }

@@ -111,7 +111,8 @@ CATEGORY WINDOW STYLE
 .category-pane-div {
     -fx-background-color: grey;
 }
-#userLoginLabel {
+#userLoginLabel, #userAccessLabel, #userPasswordLabel,
+#userLoginLabelText, #userAccessLabelText {
     -fx-font-size: 12px;
     -fx-font-family: "Inter SemiBold";
     -fx-text-fill: white;

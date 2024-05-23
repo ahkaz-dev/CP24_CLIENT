@@ -24,13 +24,10 @@ public class Vacancy {
 
     @Override
     public String toString() {
-        return "Vacancy{" +
-                "name='" + name + '\'' +
-                ", fromEmployer='" + fromEmployer + '\'' +
-                ", wage='" + wage + '\'' +
-                ", workExperience='" + workExperience + '\'' +
-                ", headcount='" + headcount + '\'' +
-                ", spec=" + spec +
-                '}';
+        return '(' + name + ") " + fromEmployer  +
+                " " + wage +
+                " " + workExperience  +
+                " " + headcount  +
+                " " + spec;
     }
 }

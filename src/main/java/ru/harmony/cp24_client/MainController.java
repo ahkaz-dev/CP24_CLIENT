@@ -5,6 +5,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
@@ -12,19 +13,28 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import ru.harmony.cp24_client.controller.VacancyController;
+import ru.harmony.cp24_client.controller.WorkerController;
+import ru.harmony.cp24_client.controller.fuctional.AddWorkerController;
+import ru.harmony.cp24_client.service.entity.UserService;
 
 import java.io.IOException;
 
 public class MainController {
     @FXML
     public Label userLoginLabel;
+    @FXML
+    public Label userPasswordLabel;
+    @FXML
+    public Label userAccessLabel;
     public Pane catalogMainPane;
+
     @FXML
     private AnchorPane anchorPaneMain;
     @FXML
     private BorderPane mainBorderPane;
 
     private VacancyController categoryItController;
+    private UserService userService;
 
     private Stage primaryStage;
     private HelloController controller;
@@ -42,6 +52,14 @@ public class MainController {
         this.userLoginLabel.setText(userLoginLabel.getText());
     }
 
+    public void setUserPasswordLabel(Label userPasswordLabel) {
+        this.userPasswordLabel.setText(userPasswordLabel.getText());
+    }
+
+    public void setUserAccessLabel(Label userAccessLabel) {
+        this.userAccessLabel.setText(userAccessLabel.getText());
+    }
+
     public void handleLogoutButton(MouseEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(HelloController.class.getResource("hello-view.fxml"));
         Parent root = loader.load();
@@ -57,7 +75,13 @@ public class MainController {
     }
 
     @FXML
-    public void handeITcontinueButton(ActionEvent actionEvent) throws IOException {
+    public void handeHelpButton(MouseEvent event) throws IOException {
+        Alert a = new Alert(Alert.AlertType.INFORMATION);
+        a.setAlertType(Alert.AlertType.INFORMATION);
+
+        a.setHeaderText("Информация | Harmony");
+        a.setContentText("Данная функцие еще не добавлена в систему");
+        a.show();
     }
 
     @FXML

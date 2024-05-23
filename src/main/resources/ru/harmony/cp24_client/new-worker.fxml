@@ -20,5 +20,10 @@
     <Label layoutX="31.0" layoutY="254.0" text="Доступ" />
     <Button fx:id="addNewWorker" layoutX="52.0" layoutY="311.0" mnemonicParsing="false" onAction="#handelAddButton" text="Добавить" />
     <Button layoutX="263.0" layoutY="311.0" mnemonicParsing="false" onAction="#handlerCancelButton" text="Отмена" />
+      <Label fx:id="labelname" layoutX="31.0" layoutY="77.0" text="Пример: Иван" textFill="#838383" />
+      <Label fx:id="labelSurname" layoutX="31.0" layoutY="117.0" text="Пример: Иванов" textFill="#838383" />
+      <Label fx:id="labelLastname" layoutX="31.0" layoutY="167.0" text="Пример: Иванович" textFill="#838383" />
+      <Label fx:id="labelPosition" layoutX="31.0" layoutY="217.0" text="Пример: Разработчик" textFill="#838383" />
+      <Label fx:id="labelAccess" layoutX="31.0" layoutY="277.0" text="Доступ должен быть выбран" textFill="#838383" visible="false" />
 </children>
 </AnchorPane>

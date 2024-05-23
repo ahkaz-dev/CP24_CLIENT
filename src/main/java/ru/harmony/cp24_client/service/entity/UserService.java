@@ -36,6 +36,31 @@ public class UserService {
         return response.isStatus();
     }
 
+    public String findByAccessString(String login, String password) {
+        String tempData = httpService.get(client_property.getAllUserData() + login + "&password=" + password);
+        DataResponse<User> response = json.getObject(tempData, dataType);
+        if (tempData.endsWith("\"name\":\"Рекрутер\"}}}}")) {
+            return "Рекрутер";
+        }
+        if (tempData.endsWith("\"name\":\"Гость\"}}}}")) {
+            return "Гость";
+        }
+        if (tempData.endsWith("\"name\":\"Администратор\"}}}}")) {
+            return "Админ";
+        }
+        return "";
+    }
+
+    public boolean findByDataAccess(String login, String password) {
+        String tempData = httpService.get(client_property.getAllUserDataByAccess() + login + "&password=" + password);
+        DataResponse<User> response = json.getObject(tempData, dataType);
+        if (tempData.startsWith("{\"status\":true")) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
     public boolean checkServerConnect() {
         try (Socket socket = new Socket("localhost", 28245)) {
             return true;

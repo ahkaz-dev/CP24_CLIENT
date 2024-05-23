@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import lombok.Getter;
@@ -11,16 +12,14 @@ import lombok.Setter;
 import ru.harmony.cp24_client.Entity.Access;
 import ru.harmony.cp24_client.Entity.Form;
 import ru.harmony.cp24_client.Entity.Worker;
-import ru.harmony.cp24_client.service.entity.FormService;
-import ru.harmony.cp24_client.service.entity.SpecService;
-import ru.harmony.cp24_client.service.entity.VacancyService;
-import ru.harmony.cp24_client.service.entity.WorkerService;
+import ru.harmony.cp24_client.service.entity.*;
 
 import java.util.Optional;
 
 public class AddWorkerController {
     private final WorkerService service = new WorkerService();
-    private final SpecService serviceSpec = new SpecService();
+    private final AccessService accessService = new AccessService();
+    private final UserService userService = new UserService();
 
     @FXML
     public ComboBox<Access> access;
@@ -32,11 +31,29 @@ public class AddWorkerController {
     public TextField surName;
     @FXML
     public TextField name;
+    public Button addNewWorker;
+    public Label labelSurname;
+    public Label labelname;
+    public Label labelLastname;
+    public Label labelPosition;
+    public Label labelAccess;
 
     private Stage stage;
 
     private Button addNewFormButton;
     private Button updateFormButton;
+
+
+
+    @FXML
+    private void initialize() {
+        try {
+            accessService.getAll();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        access.setItems(accessService.getAccesses());
+    }
 
     @Setter
     @Getter
@@ -45,17 +62,11 @@ public class AddWorkerController {
     public void start() {
         if (workerGive == null)  workerGive = Optional.empty();
         if(workerGive.isPresent()) {
-//            formHeader.setText(formGive.get().getFormHeader());
-//            aspSpec.setText(formGive.get().getAspSpec());
-//            name.setText(formGive.get().getName());
-//            surname.setText(formGive.get().getSurName());
-//            lastname.setText(formGive.get().getLastName());
-//            aspSkills.setText(formGive.get().getAspSkills());
-//            workExperience.setText(formGive.get().getWorkExperience());
-//            education.setText(formGive.get().getEducation());
-//            workBefore.setText(formGive.get().getWorkBefore());
-//            aspBirthDate.setText(formGive.get().getAspBirthDate());
-//            comboBoxVacancy.setValue(formGive.get().getVacancy());
+            surName.setText(workerGive.get().getSurName());
+            lastName.setText(workerGive.get().getLastName());
+            name.setText(workerGive.get().getName());
+            position.setText(workerGive.get().getPosition());
+            access.setValue(workerGive.get().getAccess());
         }
     }
 
@@ -73,29 +84,17 @@ public class AddWorkerController {
 
     public void handelAddButton(ActionEvent event) {
         Worker workerTemp = new Worker();
-        if (!formHeader.getText().isEmpty() &&
-                !aspSpec.getText().isEmpty() &&
+        if (!surName.getText().isEmpty() &&
+                !lastName.getText().isEmpty() &&
                 !name.getText().isEmpty() &&
-                !surname.getText().isEmpty() &&
-                !lastname.getText().isEmpty() &&
-                !aspSkills.getText().isEmpty() &&
-                !workExperience.getText().isEmpty() &&
-                !education.getText().isEmpty() &&
-                !workBefore.getText().isEmpty() &&
-                !aspBirthDate.getText().isEmpty() &&
-                comboBoxVacancy.getSelectionModel().getSelectedItem() != null) {
+                !position.getText().isEmpty() &&
+                access.getSelectionModel().getSelectedItem() != null) {
             // Все поля заполнены
-            workerTemp.setFormHeader(formHeader.getText());
-            workerTemp.setAspSpec(aspSpec.getText());
+            workerTemp.setLastName(lastName.getText());
+            workerTemp.setSurName(surName.getText());
             workerTemp.setName(name.getText());
-            workerTemp.setSurName(surname.getText());
-            workerTemp.setLastName(lastname.getText());
-            workerTemp.setAspSkills(aspSkills.getText());
-            workerTemp.setWorkExperience(workExperience.getText());
-            workerTemp.setEducation(education.getText());
-            workerTemp.setWorkBefore(workBefore.getText());
-            workerTemp.setAspBirthDate(aspBirthDate.getText());
-            workerTemp.setVacancy(comboBoxVacancy.getSelectionModel().getSelectedItem());
+            workerTemp.setPosition(position.getText());
+            workerTemp.setAccess(access.getSelectionModel().getSelectedItem());
             start();
             try {
                 if (workerGive.isEmpty()) {
@@ -116,6 +115,12 @@ public class AddWorkerController {
         } else {
             // Не все поля заполнены
             System.out.println("error");
+            labelname.setStyle("-fx-text-fill: red;");
+            labelAccess.setVisible(true); labelAccess.setStyle("-fx-text-fill: red;");
+            labelPosition.setStyle("-fx-text-fill: red;");
+            labelLastname.setStyle("-fx-text-fill: red;");
+            labelSurname.setStyle("-fx-text-fill: red;");
+            labelname.setStyle("-fx-text-fill: red;");
         }
     }
 

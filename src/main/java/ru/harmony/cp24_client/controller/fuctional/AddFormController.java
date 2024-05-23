@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import lombok.Getter;
@@ -31,6 +32,17 @@ public class AddFormController {
     public TextField workBefore;
     public TextField aspBirthDate;
     public ComboBox<Vacancy> comboBoxVacancy;
+    public Label labelBirthData;
+    public Label labelVacancy;
+    public Label labelHeader;
+    public Label labelSpec;
+    public Label labelSurname;
+    public Label labelLastname;
+    public Label labelName;
+    public Label labelSkills;
+    public Label labelWorkbefore;
+    public Label labelEduc;
+    public Label labelCompanyName;
 
     private Stage stage;
     FormController controller = new FormController();
@@ -93,7 +105,7 @@ public class AddFormController {
                 !workExperience.getText().isEmpty() &&
                 !education.getText().isEmpty() &&
                 !workBefore.getText().isEmpty() &&
-                !aspBirthDate.getText().isEmpty() &&
+                !aspBirthDate.getText().isEmpty() && aspBirthDate.getText().matches("^(0[1-9]|[1-2][0-9]|3[0-1])\\.(0[1-9]|1[0-2])\\.(\\d{4})$") &&
                 comboBoxVacancy.getSelectionModel().getSelectedItem() != null) {
             // Все поля заполнены
             tempForm.setFormHeader(formHeader.getText());
@@ -127,6 +139,17 @@ public class AddFormController {
         } else {
             // Не все поля заполнены
             System.out.println("error");
+            labelBirthData.setStyle("-fx-text-fill: red;");
+            labelVacancy.setVisible(true); labelVacancy.setStyle("-fx-text-fill: red;");
+            labelEduc.setStyle("-fx-text-fill: red;");
+            labelHeader.setStyle("-fx-text-fill: red;");
+            labelName.setStyle("-fx-text-fill: red;");
+            labelSkills.setStyle("-fx-text-fill: red;");
+            labelLastname.setStyle("-fx-text-fill: red;");
+            labelSpec.setStyle("-fx-text-fill: red;");
+            labelSurname.setStyle("-fx-text-fill: red;");
+            labelWorkbefore.setStyle("-fx-text-fill: red;");
+            labelCompanyName.setStyle("-fx-text-fill: red;");
         }
     }
 

@@ -8,19 +8,25 @@
 
 <AnchorPane prefHeight="350.0" prefWidth="361.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.harmony.cp24_client.controller.fuctional.AddVacancyController">
    <children>
-      <TextField fx:id="headerVacancyField" layoutX="171.0" layoutY="56.0" />
-      <TextField fx:id="wageField" layoutX="171.0" layoutY="99.0" />
-      <TextField fx:id="employeeField" layoutX="171.0" layoutY="151.0" />
-      <TextField fx:id="workExperienceField" layoutX="171.0" layoutY="188.0" />
-      <TextField fx:id="headCountField" layoutX="171.0" layoutY="220.0" />
-      <ComboBox fx:id="comboBoxSpec" layoutX="171.0" layoutY="263.0" prefWidth="150.0" />
-      <Label layoutX="31.0" layoutY="60.0" text="Заголовок" />
-      <Label layoutX="31.0" layoutY="103.0" text="ЗП" />
-      <Label layoutX="31.0" layoutY="155.0" text="Компания" />
-      <Label layoutX="31.0" layoutY="192.0" text="Опыт работы" />
+      <TextField fx:id="headerVacancyField" layoutX="181.0" layoutY="26.0" />
+      <TextField fx:id="wageField" layoutX="181.0" layoutY="79.0" />
+      <TextField fx:id="employeeField" layoutX="181.0" layoutY="131.0" />
+      <TextField fx:id="workExperienceField" layoutX="181.0" layoutY="178.0" />
+      <TextField fx:id="headCountField" layoutX="181.0" layoutY="220.0" />
+      <ComboBox fx:id="comboBoxSpec" layoutX="181.0" layoutY="263.0" prefWidth="150.0" />
+      <Label layoutX="31.0" layoutY="30.0" text="Заголовок" />
+      <Label layoutX="31.0" layoutY="83.0" text="ЗП" />
+      <Label layoutX="31.0" layoutY="135.0" text="Компания" />
+      <Label layoutX="31.0" layoutY="182.0" text="Опыт работы" />
       <Label layoutX="31.0" layoutY="224.0" text="Кол-во сотрудников" />
       <Label layoutX="31.0" layoutY="267.0" text="Специализация" />
       <Button fx:id="addNewVacancyModal" layoutX="62.0" layoutY="311.0" mnemonicParsing="false" onAction="#handelAddButton" text="Добавить" />
       <Button layoutX="273.0" layoutY="311.0" mnemonicParsing="false" onAction="#handlerCancelButton" text="Отмена" />
+      <Label fx:id="labelHeader" layoutX="31.0" layoutY="43.0" text="Пример: Разработчик Go" textFill="#979797" />
+      <Label fx:id="labelWage" layoutX="31.0" layoutY="95.0" text="Пример: 80-100тыс р." textFill="#979797" />
+      <Label fx:id="labelCompany" layoutX="31.0" layoutY="146.0" text="Пример: Yandex" textFill="#979797" />
+      <Label fx:id="labelWorkExp" layoutX="31.0" layoutY="196.0" text="Пример: от 3 лет" textFill="#979797" />
+      <Label fx:id="labelWorkerCount" layoutX="31.0" layoutY="237.0" text="Пример: 1" textFill="#979797" />
+      <Label fx:id="labelSpec" layoutX="31.0" layoutY="292.0" text="Специализация должна быть выбрана" textFill="#979797" visible="false" />
    </children>
 </AnchorPane>

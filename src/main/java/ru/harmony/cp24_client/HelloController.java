@@ -15,6 +15,11 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import ru.harmony.cp24_client.Entity.User;
+import ru.harmony.cp24_client.Entity.Worker;
+import ru.harmony.cp24_client.controller.FormController;
+import ru.harmony.cp24_client.controller.VacancyController;
+import ru.harmony.cp24_client.controller.WorkerController;
+import ru.harmony.cp24_client.controller.fuctional.AddWorkerController;
 import ru.harmony.cp24_client.service.entity.UserService;
 
 import javax.swing.*;
@@ -41,7 +46,6 @@ public class HelloController {
     public void setPrimaryStage(Stage primaryStage) { // Метод для установки первичного окна
         this.primaryStage = primaryStage;
         loginErrorValidLabel.setVisible(false);
-
         loginErrorConectionLabel.setVisible(!service.checkServerConnect());
     }
 
@@ -54,7 +58,7 @@ public class HelloController {
         if (dataValidation()) {
             try {
                 //primaryStage.close();
-                //service.findByData(login, password);
+                service.findByData(login, password);
                 FXMLLoader loader = new FXMLLoader(MainController.class.getResource("main-view.fxml"));
                 Parent root = loader.load();
 
@@ -62,6 +66,19 @@ public class HelloController {
                 mainController.setPrimaryStage(primaryStage);
                 mainController.setHelloApplication(this.helloApplication);
                 mainController.setUserLoginLabel(new Label(login));
+                mainController.setUserAccessLabel(new Label(service.findByAccessString(login, password)));
+
+                VacancyController vacancyController = new VacancyController();
+                vacancyController.setLogin(login);
+                vacancyController.setPassword(password);
+
+                FormController formController = new FormController();
+                formController.setLogin(login);
+                formController.setPassword(password);
+
+                WorkerController workerController = new WorkerController();
+                workerController.setLogin(login);
+                workerController.setPassword(password);
 
                 Scene scene = new Scene(root);
                 primaryStage.setScene(scene);
@@ -105,8 +122,8 @@ public class HelloController {
     public void handleGoogleLoginButton(MouseEvent mouseEvent) {
         a.setAlertType(Alert.AlertType.INFORMATION);
 
-        a.setHeaderText("Инфорация | Harmony");
-        a.setContentText("Просим прощения (╥﹏╥)! Данная функцие еще не добавлена в систему. . .");
+        a.setHeaderText("Информация | Harmony");
+        a.setContentText("Данная функцие еще не добавлена в систему");
         a.show();
     }
 

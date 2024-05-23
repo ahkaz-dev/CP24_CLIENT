@@ -4,6 +4,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import lombok.Getter;
@@ -27,6 +28,12 @@ public class AddVacancyController {
     public TextField headerVacancyField;
     @FXML
     public Button addNewVacancyModal;
+    public Label labelHeader;
+    public Label labelWage;
+    public Label labelCompany;
+    public Label labelWorkExp;
+    public Label labelWorkerCount;
+    public Label labelSpec;
     private Stage stage;
 
     VacancyController controller = new VacancyController();
@@ -103,7 +110,7 @@ public class AddVacancyController {
                     stage.close();
                 }
                 if (addNewVacancyButton != null) {
-                    addNewVacancyButton.setDisable(false);
+                    addNewVacancyButton.setDisable(true);
                     updateVacancyButton.setDisable(false);
                 }
             } catch (Exception e) {
@@ -112,6 +119,12 @@ public class AddVacancyController {
         } else {
             // Не все поля заполнены
             System.out.println("error");
+            labelCompany.setStyle("-fx-text-fill: red;");
+            labelSpec.setVisible(true); labelSpec.setStyle("-fx-text-fill: red;");
+            labelWage.setStyle("-fx-text-fill: red;");
+            labelHeader.setStyle("-fx-text-fill: red;");
+            labelWorkExp.setStyle("-fx-text-fill: red;");
+            labelWorkerCount.setStyle("-fx-text-fill: red;");
         }
     }
 

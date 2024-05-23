@@ -19,6 +19,7 @@ import ru.harmony.cp24_client.controller.fuctional.AddFormController;
 import ru.harmony.cp24_client.service.entity.FormService;
 
 import javafx.beans.binding.Bindings;
+import ru.harmony.cp24_client.service.entity.UserService;
 import ru.harmony.cp24_client.service.entity.VacancyService;
 
 import java.io.IOException;
@@ -26,6 +27,8 @@ import java.util.Optional;
 
 
 public class FormController {
+    private final UserService userService = new UserService();
+
     @FXML
     public TableView<Form> tableViewForm;
 
@@ -51,6 +54,30 @@ public class FormController {
     private final FormService service = new FormService();
     private final VacancyService vacancyService = new VacancyService();
 
+    static private String login;
+    static private String password;
+
+    public void setLogin(String login) {
+        FormController.login = login;
+    }
+
+    public void setPassword(String password) {
+        FormController.password = password;
+    }
+
+    public void checkAccess() {
+        if (userService.findByDataAccess(login, password)) {
+            addNewFormButton.setDisable(false);
+            updateFormButton.setDisable(true);
+            deleteFormButton.setDisable(false);
+        } else {
+            addNewFormButton.setDisable(true);
+            updateFormButton.setDisable(true);
+            deleteFormButton.setDisable(true);
+        }
+    }
+
+
 
     public Vacancy vacancy;
     public Button addNewFormButton;
@@ -71,7 +98,7 @@ public class FormController {
 
     @FXML
     private void initialize() {
-
+        checkAccess();
         try {
             service.getAll();
             vacancyService.getAll();
@@ -93,6 +120,7 @@ public class FormController {
     }
 
     public void handleAddFormButton(ActionEvent event) throws IOException {
+        checkAccess();
         FXMLLoader loader = new FXMLLoader(HelloApplication.class.getResource("new-form.fxml"));
         Parent root = loader.load();
         AddFormController controller = loader.getController();
@@ -118,13 +146,14 @@ public class FormController {
         if (event.getButton().equals(MouseButton.PRIMARY)){
             if(event.getClickCount() == 2) {
                 if (tableViewForm.getSelectionModel().getSelectedItem() != null) {
-                    updateFormButton.setDisable(false);
+                    if (userService.findByDataAccess(login, password)) updateFormButton.setDisable(false);
                 }
             }
         }
     }
 
     public void handleDeleteFormButton(ActionEvent event) {
+        checkAccess();
         Form selectedForm = tableViewForm.getSelectionModel().getSelectedItem();
         if (selectedForm != null) {
             service.delete(selectedForm);
@@ -134,6 +163,7 @@ public class FormController {
     }
 
     public void handleUpdateFormButton(ActionEvent event) throws IOException {
+        checkAccess();
         Form tempForm = tableViewForm.getSelectionModel().getSelectedItem();
         FXMLLoader loader = new FXMLLoader(HelloApplication.class.getResource("new-form.fxml"));
         Parent root = loader.load();
