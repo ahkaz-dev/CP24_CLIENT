@@ -36,6 +36,12 @@ public class UserService {
         return response.isStatus();
     }
 
+    public boolean findByAdmin(String login, String password) {
+        String tempData = httpService.get(client_property.getAdminByData() + login + "&password=" + password);
+        DataResponse<User> response = json.getObject(tempData, dataType);
+        return response.isStatus();
+    }
+
     public String findByAccessString(String login, String password) {
         String tempData = httpService.get(client_property.getAllUserData() + login + "&password=" + password);
         DataResponse<User> response = json.getObject(tempData, dataType);

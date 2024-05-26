@@ -37,6 +37,7 @@ public class ClientProperties {
     private String updateUser;
     private String allUserData;
     private String allUserDataByAccess;
+    private String adminByData;
 
     public ClientProperties() {
         try (InputStream inputStream = HelloApplication.class.getClassLoader().getResourceAsStream("config.properties")) {
@@ -68,6 +69,7 @@ public class ClientProperties {
             updateUser = properties.getProperty("user.update");
             allUserData = properties.getProperty("user.getData");
             allUserDataByAccess = properties.getProperty("user.getDataByAccess");
+            adminByData = properties.getProperty("user.getAdminByData");
         } catch (IOException e) {
             e.printStackTrace();
         }

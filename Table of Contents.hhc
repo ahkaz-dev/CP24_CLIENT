@@ -13,11 +13,39 @@
 		</OBJECT>
 	<UL>
 		<LI> <OBJECT type="text/sitemap">
-			<param name="Name" value="&Icirc; &iuml;&eth;&icirc;&atilde;&eth;&agrave;&igrave;&igrave;&aring;">
+			<param name="Name" value="&Icirc; &iacute;&agrave;&ntilde;">
 			<param name="Local" value="hello.htm">
 			</OBJECT>
+	</UL>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="&Auml;&agrave;&iacute;&iacute;&ucirc;&aring;">
+		<param name="Local" value="about_data.htm">
+		</OBJECT>
+	<UL>
 		<LI> <OBJECT type="text/sitemap">
-			<param name="Name" value="&Ntilde;&aring;&eth;&acirc;&aring;&eth;&iacute;&agrave;&yuml; &divide;&agrave;&ntilde;&ograve;&uuml;">
+			<param name="Name" value="&Egrave;&ccedil;&igrave;&aring;&iacute;&aring;&iacute;&egrave;&aring;">
+			<param name="Local" value="about_update.htm">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="&Auml;&icirc;&aacute;&agrave;&acirc;&euml;&aring;&iacute;&egrave;&aring;">
+			<param name="Local" value="about_data.htm">
+			</OBJECT>
+	</UL>
+	<LI> <OBJECT type="text/sitemap">
+		<param name="Name" value="&Agrave;&acirc;&ograve;&icirc;&eth;&egrave;&ccedil;&agrave;&ouml;&egrave;&yuml;">
+		</OBJECT>
+	<UL>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="&Euml;&icirc;&atilde;&egrave;&iacute;">
+			<param name="Local" value="about_login.htm">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="&Auml;&icirc;&ntilde;&ograve;&oacute;&iuml;">
+			<param name="Local" value="about_access.htm">
+			</OBJECT>
+		<LI> <OBJECT type="text/sitemap">
+			<param name="Name" value="&Auml;&icirc;&ntilde;&ograve;&oacute;&iuml; &ecirc; &auml;&agrave;&iacute;&iacute;&ucirc;&igrave;">
+			<param name="Local" value="about_myAccess.htm">
 			</OBJECT>
 	</UL>
 </UL>

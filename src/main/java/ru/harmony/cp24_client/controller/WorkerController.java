@@ -49,7 +49,7 @@ public class WorkerController {
     }
 
     public void checkAccess() {
-        if (userService.findByDataAccess(login, password)) {
+        if (userService.findByAdmin(login, password)) {
             addNewWorkerButton.setDisable(false);
             updateWorkerButton.setDisable(true);
             deleteWorkerButton.setDisable(false);
@@ -105,7 +105,7 @@ public class WorkerController {
         if (event.getButton().equals(MouseButton.PRIMARY)){
             if(event.getClickCount() == 2) {
                 if (tableViewWorker.getSelectionModel().getSelectedItem() != null) {
-                    if (userService.findByDataAccess(login, password)) updateWorkerButton.setDisable(false);
+                    if (userService.findByAdmin(login, password)) updateWorkerButton.setDisable(false);
                 }
             }
         }
