@@ -194,7 +194,8 @@ TABLEVIEW WINDOW STYLE
 
 #addNewVacancyButton, #updateVacancyButton, #deleteVacancyButton,
 #addNewWorkerButton, #updateWorkerButton, #deleteWorkerButton,
-#addNewFormButton, #updateFormButton, #deleteFormButton {
+#addNewFormButton, #updateFormButton, #deleteFormButton, #addNewFormModal, #cancelNewFormModal,
+#addNewWorker, #cancelNewWorker, #addNewVacancyModal, #cancelNewVacancyModal{
     -fx-pref-width: 89px;
     -fx-pref-height: 20px;
 
@@ -210,7 +211,7 @@ TABLEVIEW WINDOW STYLE
 .table-view {
     -fx-focus-color: transparent;
     -fx-faint-focus-color: transparent;
-    -fx-selection-bar: transparent;
+    /*-fx-selection-bar: transparent;*/
 }
 .table-view .table-cell {
     -fx-table-cell-border-color: transparent;
@@ -223,4 +224,34 @@ TABLEVIEW WINDOW STYLE
     -fx-min-height: 0;
     -fx-pref-height: 0;
     -fx-max-height: 0;
+}
+
+
+#modalView {
+    -fx-font-family: "Inter Regular";
+    -fx-font-size: 11px;
+}
+#formHeader, #aspSpec, #name, #surname,
+#lastname, #aspSkills, #workExperience, #education,
+#workBefore, #aspBirthDate, #comboBoxVacancy, #surName,
+#lastName, #position, #access, #headerVacancyField, #wageField,
+#employeeField, #workExperienceField, #headCountField, #comboBoxSpec{
+    -fx-focus-color: transparent;
+    -fx-faint-focus-color: transparent;
+    -fx-border-color: transparent;
+    -fx-border-width: 1;
+    -fx-border-radius: 1;
+}
+#formHeader:focused, #aspSpec:focused, #name:focused, #surname:focused,
+#lastname:focused, #aspSkills:focused, #workExperience:focused, #education:focused,
+#workBefore:focused, #aspBirthDate:focused, #comboBoxVacancy:focused,
+#surName:focused, #lastName:focused, #position:focused, #access:focused, #headerVacancyField:focused,
+#wageField:focused, #employeeField:focused, #workExperienceField:focused, #headCountField:focused,
+#comboBoxSpec:focused{
+    -fx-border-color: #FF924B;
+    -fx-effect: dropshadow(one-pass-box, rgba(255, 146, 75, 0.15), 15, 0.6, 0, 2);
+
+    -fx-border-width: 1;
+    -fx-border-radius: 3;
+/*    -fx-background-insets: 1, 1, 1, 1;*/
 }

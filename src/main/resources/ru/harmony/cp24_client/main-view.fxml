@@ -69,7 +69,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </ImageView>
-            <Label layoutX="69.0" layoutY="373.0" onMouseClicked="#handeHelpButton" styleClass="vacancy-label" text="Помощь">
+            <Label layoutX="69.0" layoutY="373.0" onMouseClicked="#handeHelpButton" styleClass="vacancy-label" text="Справка">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor></Label>

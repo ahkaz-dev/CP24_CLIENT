@@ -6,31 +6,31 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="578.0" prefWidth="351.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.harmony.cp24_client.controller.fuctional.AddFormController">
+<AnchorPane fx:id="modalView" prefHeight="578.0" prefWidth="351.0" style="-fx-background-color: white;" stylesheets="@components/style/style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.harmony.cp24_client.controller.fuctional.AddFormController">
     <children>
-        <TextField fx:id="formHeader" layoutX="171.0" layoutY="32.0" promptText="Введите заголовок" />
-        <TextField fx:id="aspSpec" layoutX="171.0" layoutY="79.0" promptText="Введите специальность" />
-        <TextField fx:id="name" layoutX="171.0" layoutY="127.0" promptText="Введите Имя" />
-        <TextField fx:id="aspSkills" layoutX="171.0" layoutY="249.0" promptText="Введите навыки" />
-        <TextField fx:id="workExperience" layoutX="171.0" layoutY="292.0" promptText="Введите опыт работы" />
-        <TextField fx:id="education" layoutX="176.0" layoutY="342.0" promptText="Введите образование" />
-        <TextField fx:id="workBefore" layoutX="176.0" layoutY="383.0" promptText="Введите прошлое место работы" />
-        <TextField fx:id="aspBirthDate" layoutX="171.0" layoutY="433.0" promptText="Введите дату рождения" />
+        <TextField fx:id="formHeader" layoutX="191.0" layoutY="32.0" promptText="Введите заголовок" />
+        <TextField fx:id="aspSpec" layoutX="191.0" layoutY="79.0" promptText="Введите специальность" />
+        <TextField fx:id="name" layoutX="191.0" layoutY="127.0" promptText="Введите Имя" />
+        <TextField fx:id="aspSkills" layoutX="191.0" layoutY="249.0" promptText="Введите навыки" />
+        <TextField fx:id="workExperience" layoutX="191.0" layoutY="292.0" promptText="Введите опыт работы" />
+        <TextField fx:id="education" layoutX="192.0" layoutY="342.0" promptText="Введите образование" />
+        <TextField fx:id="workBefore" layoutX="190.0" layoutY="383.0" promptText="Введите прошлое место работы" />
+        <TextField fx:id="aspBirthDate" layoutX="190.0" layoutY="433.0" promptText="Введите дату рождения" />
         <Label layoutX="31.0" layoutY="36.0" text="Заголовок" />
         <Label layoutX="31.0" layoutY="83.0" text="Специальность" />
         <Label layoutX="31.0" layoutY="131.0" text="Имя" />
         <Label layoutX="31.0" layoutY="253.0" text="Навыки" />
         <Label layoutX="31.0" layoutY="296.0" text="Опыт работы" />
         <Label layoutX="31.0" layoutY="347.0" text="Образование" />
-        <Button fx:id="addNewFormModal" layoutX="62.0" layoutY="531.0" mnemonicParsing="false" onAction="#handelAddButton" text="Добавить" />
-        <Button layoutX="273.0" layoutY="531.0" mnemonicParsing="false" onAction="#handlerCancelButton" text="Отмена" />
+        <Button fx:id="addNewFormModal" layoutX="89.0" layoutY="531.0" mnemonicParsing="false" onAction="#handelAddButton" text="Добавить" />
+        <Button fx:id="cancelNewFormModal" layoutX="236.0" layoutY="531.0" mnemonicParsing="false" onAction="#handlerCancelButton" text="Отмена" />
       <Label layoutX="31.0" layoutY="387.0" text="Прошлое место работы" />
       <Label layoutX="31.0" layoutY="437.0" text="Дата рождения" />
-      <TextField fx:id="surname" layoutX="171.0" layoutY="172.0" promptText="Введите Фамилию" />
+      <TextField fx:id="surname" layoutX="191.0" layoutY="172.0" promptText="Введите Фамилию" />
       <Label layoutX="31.0" layoutY="176.0" text="Фамилия" />
       <Label layoutX="30.0" layoutY="218.0" text="Отчество" />
-      <TextField fx:id="lastname" layoutX="171.0" layoutY="213.0" promptText="Введите Отчество" />
-      <ComboBox fx:id="comboBoxVacancy" layoutX="176.0" layoutY="476.0" prefWidth="150.0" promptText="Вакансии" />
+      <TextField fx:id="lastname" layoutX="191.0" layoutY="213.0" promptText="Введите Отчество" />
+      <ComboBox fx:id="comboBoxVacancy" layoutX="192.0" layoutY="476.0" prefHeight="22.0" prefWidth="138.0" promptText="Вакансии" />
       <Label layoutX="32.0" layoutY="480.0" text="Вакансия" />
       <Label fx:id="labelHeader" layoutX="31.0" layoutY="54.0" text="Пример: Разработчик Java" textFill="#a1a1a1" />
       <Label fx:id="labelSpec" layoutX="31.0" layoutY="104.0" text="Пример: ИТ" textFill="#a1a1a1" />

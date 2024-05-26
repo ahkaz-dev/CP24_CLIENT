@@ -15,7 +15,7 @@
             <TableColumn fx:id="formWorkExperience" prefWidth="72.0" resizable="false" sortable="false" text="Опыт р." />
             <TableColumn fx:id="formEducation" prefWidth="90.0" resizable="false" sortable="false" text="Образование" />
          <TableColumn fx:id="formWorkBefore" prefWidth="90.0" resizable="false" sortable="false" text="Работа до" />
-         <TableColumn fx:id="formAspBirthDate" prefWidth="86.0" resizable="false" sortable="false" text="Дата род" />
+         <TableColumn fx:id="formAspBirthDate" prefWidth="97.0" resizable="false" sortable="false" text="Дата род" />
         </columns>
     </TableView>
     <Button fx:id="addNewFormButton" layoutX="32.0" layoutY="589.0" mnemonicParsing="false" onAction="#handleAddFormButton" text="Добавить" />

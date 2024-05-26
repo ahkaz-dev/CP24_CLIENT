@@ -9,6 +9,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.image.Image;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
@@ -23,6 +24,7 @@ import ru.harmony.cp24_client.service.entity.UserService;
 import ru.harmony.cp24_client.service.entity.VacancyService;
 
 import java.io.IOException;
+import java.util.Objects;
 import java.util.Optional;
 
 
@@ -127,7 +129,10 @@ public class FormController {
         controller.setButtons(addNewFormButton, updateFormButton);
 
         Stage stage = new Stage();
+        stage.setTitle("Регистрация Анкеты | StaffHarmony");
+        stage.getIcons().add(new Image(Objects.requireNonNull(HelloApplication.class.getResourceAsStream("./components/image/icons/logo-yoga.png"))));
         controller.setStage(stage);
+        controller.setStageOptions();
 
         Scene scene = new Scene(root);
         stage.setScene(scene);
@@ -170,10 +175,15 @@ public class FormController {
         AddFormController controller = loader.getController();
         controller.setFormGive(Optional.ofNullable(tempForm));
         controller.setButtons(addNewFormButton, updateFormButton);
+
         controller.start();
 
         Stage stage = new Stage();
+        stage.setTitle("Обновление Анкеты | StaffHarmony");
+        stage.getIcons().add(new Image(Objects.requireNonNull(HelloApplication.class.getResourceAsStream("./components/image/icons/logo-yoga.png"))));
+
         controller.setStage(stage);
+        controller.setStageOptions();
 
         addNewFormButton.setDisable(true);
         updateFormButton.setDisable(true);

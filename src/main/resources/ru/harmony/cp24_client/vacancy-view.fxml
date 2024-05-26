@@ -13,7 +13,7 @@
           <TableColumn fx:id="wage" prefWidth="149.0" resizable="false" sortable="false" text="ЗП" />
           <TableColumn fx:id="workExperience" prefWidth="65.0" resizable="false" sortable="false" text="Опыт Р" />
           <TableColumn fx:id="headCount" prefWidth="72.0" resizable="false" sortable="false" text="Кол-сотр" />
-         <TableColumn fx:id="spec" prefWidth="236.0" resizable="false" sortable="false" text="Специализация" />
+         <TableColumn fx:id="spec" prefWidth="251.0" resizable="false" sortable="false" text="Специализация" />
       </columns>
     </TableView>
    <Button fx:id="addNewVacancyButton" layoutX="35.0" layoutY="589.0" mnemonicParsing="false" onAction="#handleAddButton" prefHeight="20.0" prefWidth="78.0" text="Добавить" />

@@ -6,15 +6,18 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import lombok.Getter;
 import lombok.Setter;
 import ru.harmony.cp24_client.Entity.Form;
 import ru.harmony.cp24_client.Entity.Vacancy;
+import ru.harmony.cp24_client.HelloApplication;
 import ru.harmony.cp24_client.controller.FormController;
 import ru.harmony.cp24_client.service.entity.FormService;
 import ru.harmony.cp24_client.service.entity.VacancyService;
 
+import java.util.Objects;
 import java.util.Optional;
 
 public class AddFormController {
@@ -73,6 +76,9 @@ public class AddFormController {
 
     public void setStage(Stage stage) {
         this.stage = stage;
+    }
+
+    public void setStageOptions() {
     }
 
     @FXML
