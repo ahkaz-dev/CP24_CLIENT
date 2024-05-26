@@ -5,17 +5,17 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="653.0" prefWidth="887.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.harmony.cp24_client.controller.WorkerController">
+<AnchorPane prefHeight="653.0" prefWidth="887.0" stylesheets="@components/style/style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.harmony.cp24_client.controller.WorkerController">
     <TableView fx:id="tableViewWorker" editable="true" layoutX="34.0" layoutY="85.0" onMouseClicked="#onMouseClickTableView" prefHeight="483.0" prefWidth="800.0">
         <columns>
-            <TableColumn fx:id="name" prefWidth="70.0" resizable="false" text="Имя" />
-            <TableColumn fx:id="surName" prefWidth="146.0" resizable="false" text="Фамилия" />
-            <TableColumn fx:id="lastName" prefWidth="128.0" resizable="false" text="Отчество" />
-            <TableColumn fx:id="position" prefWidth="322.0" resizable="false" text="Должность в агентстве" />
-            <TableColumn fx:id="access" prefWidth="132.0" resizable="false" text="Доступ к ИС" />
+            <TableColumn fx:id="name" prefWidth="70.0" resizable="false" sortable="false" text="Имя" />
+            <TableColumn fx:id="surName" prefWidth="146.0" resizable="false" sortable="false" text="Фамилия" />
+            <TableColumn fx:id="lastName" prefWidth="128.0" resizable="false" sortable="false" text="Отчество" />
+            <TableColumn fx:id="position" prefWidth="322.0" resizable="false" sortable="false" text="Должность в агентстве" />
+            <TableColumn fx:id="access" prefWidth="132.0" resizable="false" sortable="false" text="Доступ к ИС" />
         </columns>
     </TableView>
    <Button fx:id="addNewWorkerButton" layoutX="34.0" layoutY="595.0" mnemonicParsing="false" onAction="#handleAddWorkerButton" text="Добавить" />
-   <Button fx:id="updateWorkerButton" layoutX="134.0" layoutY="595.0" mnemonicParsing="false" onAction="#handleUpdateWorkerButton" text="Изменить" />
-   <Button fx:id="deleteWorkerButton" layoutX="244.0" layoutY="595.0" mnemonicParsing="false" onAction="#handleDeleteWorkerButton" text="Удалить" />
+   <Button fx:id="updateWorkerButton" layoutX="144.0" layoutY="595.0" mnemonicParsing="false" onAction="#handleUpdateWorkerButton" text="Изменить" />
+   <Button fx:id="deleteWorkerButton" layoutX="264.0" layoutY="595.0" mnemonicParsing="false" onAction="#handleDeleteWorkerButton" text="Удалить" />
 </AnchorPane>

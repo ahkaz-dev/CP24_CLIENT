@@ -5,20 +5,20 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="653.0" prefWidth="887.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.harmony.cp24_client.controller.FormController">
-    <TableView fx:id="tableViewForm" editable="true" layoutX="34.0" layoutY="85.0" onMouseClicked="#onMouseClickTableView" prefHeight="483.0" prefWidth="800.0">
+<AnchorPane prefHeight="653.0" prefWidth="887.0" stylesheets="@components/style/style.css" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.harmony.cp24_client.controller.FormController">
+    <TableView fx:id="tableViewForm" editable="true" layoutX="23.0" layoutY="85.0" onMouseClicked="#onMouseClickTableView" prefHeight="483.0" prefWidth="841.0">
         <columns>
-            <TableColumn fx:id="formHeader" prefWidth="137.0" resizable="false" text="Заголовок анкеты" />
-            <TableColumn fx:id="formAspSpec" prefWidth="140.0" resizable="false" text="Специальность соискт." />
-            <TableColumn fx:id="formFio" prefWidth="100.0" resizable="false" text="ФИО" />
-            <TableColumn fx:id="formAspSkills" prefWidth="114.0" resizable="false" text="Навыки" />
-            <TableColumn fx:id="formWorkExperience" prefWidth="72.0" resizable="false" text="Опыт р." />
-            <TableColumn fx:id="formEducation" prefWidth="90.0" resizable="false" text="Образование" />
-         <TableColumn fx:id="formWorkBefore" prefWidth="90.0" resizable="false" text="Работа до" />
-         <TableColumn fx:id="formAspBirthDate" prefWidth="56.0" resizable="false" text="Дата род" />
+            <TableColumn fx:id="formHeader" prefWidth="137.0" resizable="false" sortable="false" text="Заголовок анкеты" />
+            <TableColumn fx:id="formAspSpec" prefWidth="140.0" resizable="false" sortable="false" text="Специальность соискт." />
+            <TableColumn fx:id="formFio" prefWidth="100.0" resizable="false" sortable="false" text="ФИО" />
+            <TableColumn fx:id="formAspSkills" prefWidth="114.0" resizable="false" sortable="false" text="Навыки" />
+            <TableColumn fx:id="formWorkExperience" prefWidth="72.0" resizable="false" sortable="false" text="Опыт р." />
+            <TableColumn fx:id="formEducation" prefWidth="90.0" resizable="false" sortable="false" text="Образование" />
+         <TableColumn fx:id="formWorkBefore" prefWidth="90.0" resizable="false" sortable="false" text="Работа до" />
+         <TableColumn fx:id="formAspBirthDate" prefWidth="86.0" resizable="false" sortable="false" text="Дата род" />
         </columns>
     </TableView>
     <Button fx:id="addNewFormButton" layoutX="32.0" layoutY="589.0" mnemonicParsing="false" onAction="#handleAddFormButton" text="Добавить" />
-    <Button fx:id="updateFormButton" layoutX="131.0" layoutY="589.0" mnemonicParsing="false" onAction="#handleUpdateFormButton" text="Изменить" />
+    <Button fx:id="updateFormButton" layoutX="141.0" layoutY="589.0" mnemonicParsing="false" onAction="#handleUpdateFormButton" text="Изменить" />
     <Button fx:id="deleteFormButton" layoutX="247.0" layoutY="589.0" mnemonicParsing="false" onAction="#handleDeleteFormButton" text="Удалить" />
 </AnchorPane>

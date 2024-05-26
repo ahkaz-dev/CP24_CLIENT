@@ -34,7 +34,7 @@ public class MainController {
     private BorderPane mainBorderPane;
 
     private VacancyController categoryItController;
-    private UserService userService;
+    private final UserService userService = new UserService();
 
     private Stage primaryStage;
     private HelloController controller;
@@ -108,8 +108,16 @@ public class MainController {
 
     @FXML
     public void handelWorkerButton(MouseEvent event) throws IOException {
-        FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("worker-view.fxml"));
-        AnchorPane vista2 = (AnchorPane) fxmlLoader.load();
-        anchorPaneMain.getChildren().setAll(vista2);
+        if (userService.findByAdmin(userLoginLabel.getText(), userPasswordLabel.getText())) {
+            FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("worker-view.fxml"));
+            AnchorPane vista2 = (AnchorPane) fxmlLoader.load();
+            anchorPaneMain.getChildren().setAll(vista2);
+        } else {
+            Alert a = new Alert(Alert.AlertType.INFORMATION);
+            a.setAlertType(Alert.AlertType.ERROR);
+            a.setHeaderText("Ошибка доступа");
+            a.setContentText("Ваша учетная запись не имеет доступа к данной категории!");
+            a.show();
+        }
     }
 }

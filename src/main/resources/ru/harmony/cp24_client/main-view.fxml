@@ -96,6 +96,7 @@
                </cursor></Label>
             <Label fx:id="userLoginLabel" layoutX="106.0" layoutY="102.0" text="asd" />
             <Label fx:id="userAccessLabel" layoutX="106.0" layoutY="121.0" text="asd" />
+            <Label fx:id="userPasswordLabel" layoutX="106.0" layoutY="121.0" text="asd" visible="false" />
             <Label fx:id="userAccessLabelText" layoutX="55.0" layoutY="121.0" text="Роль:" />
             <Label fx:id="userLoginLabelText" layoutX="54.0" layoutY="102.0" text="Логин" />
          </children>

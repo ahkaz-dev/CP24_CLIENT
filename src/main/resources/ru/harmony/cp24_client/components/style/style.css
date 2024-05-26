@@ -44,7 +44,7 @@ LOGIN WINDOW STYLE
     -fx-font-family: "Inter Bold";
     -fx-text-fill: #141B34;
 }
-#loginButton, #exitButton {
+#loginButton, #exitButton  {
     -fx-pref-width: 212px;
     -fx-pref-height: 47px;
 
@@ -154,4 +154,73 @@ CATEGORY WINDOW STYLE
     -fx-font-size: 12px;
     -fx-font-family: "Inter Medium";
     -fx-text-fill: white;
+}
+
+/*
+
+TABLEVIEW WINDOW STYLE
+
+*/
+/* Установить цвет фона для заголовков колонок */
+.table-view .column-header-background .label {
+    -fx-background-color: #e0e0e0;
+}
+
+/* Установить цвет текста для заголовков колонок */
+.table-view .column-header .label {
+    -fx-text-fill: #000000;
+    -fx-font-weight: bold;
+}
+
+/* Установить цвет фона для ячеек колонок при наведении курсора */
+.table-row-cell:hover .table-cell {
+    -fx-background-color: #f8ab85;
+}
+
+/* Установить цвет текста для ячеек колонок при наведении курсора */
+.table-row-cell:hover .table-cell .label {
+    -fx-text-fill: #000000;
+}
+
+/* Установить цвет фона для ячеек колонок при выделении строки */
+.table-row-cell:selected .table-cell {
+    -fx-background-color: #ff894d;
+}
+
+/* Установить цвет текста для ячеек колонок при выделении строки */
+.table-row-cell:selected .table-cell .label {
+    -fx-text-fill: white;
+}
+
+#addNewVacancyButton, #updateVacancyButton, #deleteVacancyButton,
+#addNewWorkerButton, #updateWorkerButton, #deleteWorkerButton,
+#addNewFormButton, #updateFormButton, #deleteFormButton {
+    -fx-pref-width: 89px;
+    -fx-pref-height: 20px;
+
+    -fx-background-radius: 10 10 10 10;
+    -fx-background-color: #FF924B;
+
+    -fx-text-fill: white;
+    -fx-font-size: 14px;
+    -fx-font-family: "Inter SemiBold";
+
+    -fx-cursor: hand;
+}
+.table-view {
+    -fx-focus-color: transparent;
+    -fx-faint-focus-color: transparent;
+    -fx-selection-bar: transparent;
+}
+.table-view .table-cell {
+    -fx-table-cell-border-color: transparent;
+}
+.table-view .scroll-bar * {
+/*    -fx-min-width: 0;
+    -fx-pref-width: 0;
+    -fx-max-width: 0;*/
+
+    -fx-min-height: 0;
+    -fx-pref-height: 0;
+    -fx-max-height: 0;
 }

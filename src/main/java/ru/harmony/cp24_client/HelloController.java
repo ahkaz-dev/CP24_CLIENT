@@ -66,6 +66,7 @@ public class HelloController {
                 mainController.setPrimaryStage(primaryStage);
                 mainController.setHelloApplication(this.helloApplication);
                 mainController.setUserLoginLabel(new Label(login));
+                mainController.setUserPasswordLabel(new Label(password));
                 mainController.setUserAccessLabel(new Label(service.findByAccessString(login, password)));
 
                 VacancyController vacancyController = new VacancyController();
